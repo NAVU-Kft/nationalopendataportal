@@ -1,0 +1,79 @@
+@import 'cms-content';
+@import 'variables';
+@import 'full-width-splitter';
+
+.page-split-title{
+    @include fontPoppins700($textColor);
+    
+    @include full-width-splitter;
+    
+    padding: 40px 0px;
+    font-size: 20px;
+    @media (min-width: 768px)
+    {
+        padding: 67px 0px 63px;
+        font-size: 40px;
+    }
+    background: $tagGrey;
+}
+
+.news-split-title{
+    @include full-width-splitter;
+    padding: 50px 20px;
+    background: $darkGreen;
+    color: $white;
+    h3{
+        @include fontPoppins700($white);
+        font-size: 24px;
+        line-height: 36px;
+        margin: 0px 0px 19px;
+    }
+    .subtext{
+        @include fontLato($white);
+        font-size: 18px;
+        line-height: 20px;
+        margin: 0px 0px 30px;
+        text-align: center;
+    }
+    a.btn{
+        @include fontPoppins600($white);
+        font-size: 16px;
+        padding: 11px 100px;
+    }
+    @media (min-width: 768px){
+        h3{
+            font-size: 30px;
+            line-height: 45px;
+            margin: 0px 0px 10px;
+        }
+        .subtext{
+            @include fontLato600($white);
+            font-size: 20px;
+            line-height: 20px;
+            margin: 0px 0px 30px;
+        }
+        a.btn{
+            @include fontPoppins600($white);
+            font-size: 16px;
+            padding: 11px 100px;
+        }
+    }
+}
+
+h3.green{
+    @include cms-h3;
+    margin-bottom: 25px;
+}
+.education-card{
+    @include card;
+    padding: 73px 51px;
+    text-align: center;
+    h2{
+        @include headline2;
+    }
+    p{
+        @include paragraph;
+        color: $textColor;
+        opacity: 50%;
+    }
+}

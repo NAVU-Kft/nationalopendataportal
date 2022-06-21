@@ -1,0 +1,14 @@
+{% import 'macros/form.html' as form %}
+
+{% macro hufield(field) %} 
+    {{ form.input(field.field, label=_(field.label), id='field-'+field.field, placeholder='', value=data[field.field], error=errors[field.field], classes=['control-medium']) }}
+{% endmacro %}
+
+{% macro inforow(field) %} 
+{% if pkg_dict[field.field] %}
+    <tr>
+        <th scope="row" class="dataset-label">{{ _(field.label) }}</th>
+        <td class="dataset-details">{{ pkg_dict[field.field] }}</td>
+      </tr>
+  {% endif %}
+{% endmacro %}

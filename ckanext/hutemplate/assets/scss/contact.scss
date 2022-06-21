@@ -1,0 +1,16 @@
+@import "variables";
+
+.contact-data{
+    h2{
+        @include fontPoppins800($secondary900);
+        font-size: 24px;
+        line-height: 28px;
+        margin-bottom: 6px;
+    }
+    p{
+        @include fontLato500($secondary900);
+        font-size: 18px;
+        line-height: 28px;
+        margin-bottom: 6px;
+    }
+}

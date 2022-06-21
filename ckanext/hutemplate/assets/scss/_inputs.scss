@@ -1,0 +1,337 @@
+@import "variables";
+
+@mixin placeholder($color) {
+  &::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $color;
+    opacity: 1; /* Firefox */
+  }
+
+  &:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: $color;
+  }
+
+  &::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: $color;
+  }
+}
+
+@mixin label-font {
+  @include fontLato500($labelColor);
+  font-size: 14px;
+  line-height: 17px;
+}
+
+$input-font-size-small: 10px;
+$input-font-size-normal: 13px;
+$input-font-size-big: 15px;
+$input-line-height-small: 20px;
+$input-line-height-normal: 20px;
+$input-line-height-big: 20px;
+$input-height-small: 26px;
+$input-height-normal: 36px;
+$input-height-big: 46px;
+$input-padding-left: 12px;
+
+@mixin input-font($size: "normal", $state: "normal") {
+  @if $state == "normal" {
+    @include fontLato($inputColor);
+    @include placeholder($placeholderColor);
+    &:focus {
+      @include placeholder($placeholderActiveColor);
+    }
+  } @else if $state == "error" {
+    @include fontLato($dangerDefault);
+    @include placeholder($dangerDefault);
+    &:focus {
+      @include placeholder($dangerDefault);
+    }
+  }
+
+  @if $size == "small" {
+    font-size: $input-font-size-small;
+    line-height: $input-line-height-small;
+  } @else if $size == "normal" {
+    font-size: $input-font-size-normal;
+    line-height: $input-line-height-normal;
+  } @else if $size == "big" {
+    font-size: $input-font-size-big;
+    line-height: $input-line-height-big;
+  }
+}
+@mixin input-sizing($size: "normal") {
+  @if $size == "small" {
+    height: $input-height-small;
+    padding: calc(($input-height-small - $input-line-height-small) / 2)
+      $input-padding-left;
+  } @else if $size == "normal" {
+    height: $input-height-normal;
+    padding: calc(($input-height-normal - $input-line-height-normal) / 2)
+      $input-padding-left;
+  } @else if $size == "big" {
+    height: $input-height-big;
+    padding: calc(($input-height-big - $input-line-height-big) / 2)
+      $input-padding-left;
+  }
+}
+
+@mixin input-focus-border($state: "normal") {
+  outline: none;
+  @if $state == "normal" {
+    border: 1px solid $primary300;
+  } @else if $state == "error" {
+    border: 1px solid $dangerDefault;
+  }
+  box-shadow: 0px 1px 2px rgba(197, 253, 222, 0.5),
+    0px 2px 4px rgba(197, 253, 222, 0.5);
+}
+
+@mixin input-border-and-shadow($state: "normal") {
+  border-radius: 4px;
+  @if $state == "normal" {
+    border: 1px solid $primary300;
+    box-shadow: none;
+    &:focus {
+      @include input-focus-border($state);
+    }
+  } @else if $state == "error" {
+    background-color: $dangerLight;
+    border: 1px solid $dangerDefault;
+    box-shadow: none;
+    &:focus {
+      @include input-focus-border($state);
+    }
+  }
+}
+
+.control-label {
+  @include label-font;
+
+  margin-bottom: 10px;
+  .control-large & {
+    @include label-font;
+  }
+}
+textarea.form-control {
+  height: auto;
+  @include input-border-and-shadow;
+}
+.select2-container.select2-container-multi {
+  height: auto;
+}
+.select2-container,
+.form-control,
+.input-group {
+  @include input-border-and-shadow;
+  @include input-font("normal", "normal");
+  @include input-sizing;
+  .error & {
+    @include input-border-and-shadow("error");
+    @include input-font("normal", "error");
+  }
+  .control-large & {
+    @include input-sizing("big");
+    font-size: 15px;
+  }
+}
+.select2-container {
+  padding: 0;
+  &.select2-container-active {
+    @include input-focus-border;
+  }
+}
+select[data-module="hutemplate-autocomplete"]{
+  width: 100%;
+}
+body .select2-container-multi.select2-container,
+body .select2-container {
+  padding: 0;
+  &:focus-within {
+    @include input-focus-border;
+  }
+  .select2-choice,
+  .select2-choices {
+    padding: 0;
+    border: none;
+    background: none;
+    height: 100%;
+    width: 100%;
+    .select2-search-choice {
+      @include tag;
+      padding-right: 30px;
+      height: 28px;
+      line-height: 18px;
+      .select2-search-choice-close {
+        top: 7px;
+        left: unset;
+        right: 7px;
+      }
+    }
+    &.select2-default{
+      /*placeholder*/
+      .select2-chosen{
+        color: $placeholderColor;
+      }
+    }
+    .select2-search-field:first-child input {
+      @include input-sizing;
+      @include placeholder($placeholderColor);
+      @include fontLato($inputColor);
+      height: 100%;
+    }
+    .select2-chosen {
+      @include input-font;
+      @include input-sizing;
+      height: 100%;
+      width: 100%;
+    }
+    .select2-arrow {
+      background: none;
+      border: none;
+      b {
+        background: none;
+        &::after {
+          @include fa-icon;
+          content: "\f078";
+          font-size: 10px;
+          line-height: 36px;
+          margin-left: 4px;
+        }
+      }
+    }
+  }
+  &.select2-container-active {
+    .select2-choices {
+      border: none;
+      box-shadow: none;
+      -webkit-box-shadow: none;
+    }
+  }
+}
+
+body {
+  .select2-drop-active {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0px 0px 1px rgba(12, 26, 75, 0.2),
+      0px 1px 3px rgba(50, 50, 71, 0.1);
+  }
+  .select2-drop {
+    margin-top: 9px;
+  }
+  .select2-results {
+    padding: 0;
+    margin: 21px 12px;
+    .select2-result-label,
+    .select2-no-results {
+      @include paragraph(#425466);
+      padding: 8px 11px;
+    }
+    .select2-no-results {
+      background: $white;
+    }
+    .select2-highlighted .select2-result-label {
+      color: $white;
+    }
+    .select2-highlighted {
+      background: $primary300;
+      color: $white;
+      border-radius: 6px;
+    }
+  }
+  .select2-search input {
+    border: none;
+    background: none;
+  }
+}
+
+.input-group {
+  padding: 4px;
+  .input-group-addon {
+    border: none;
+    background-color: $white;
+    padding-left: 13px;
+  }
+  .error & .input-group-addon {
+    background-color: $dangerLight;
+  }
+  .error-block {
+    background-color: $dangerLight;
+  }
+  &:focus-within {
+    @include input-focus-border;
+  }
+  .error &:focus-within {
+    @include input-focus-border("error");
+  }
+  &.module-input-group,
+  &.search-input-group,
+  &.package-read-input-group,
+  &.module-input-group:focus-within,
+  &.search-input-group:focus-within,
+  &.package-read-input-group:focus-within {
+    border: none;
+    box-shadow: none;
+  }
+  .error & input {
+    background-color: $dangerLight;
+  }
+  input {
+    @include input-font;
+    border: none;
+    width: 100%;
+    height: 100%;
+    .error & {
+      border: none;
+      @include placeholder($dangerDefault);
+      color: $dangerDefault;
+      &:focus {
+        border: none;
+        box-shadow: none;
+      }
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.popover-header{
+  .input-group {
+    border: none;
+    padding: 0;
+    .form-control:focus{
+      border: 1px solid transparent;
+    }
+  }
+}
+
+.error-block {
+  @include fontLato($dangerDefault);
+  background-color: $white;
+}
+.editor .editor-info-block, .editor .info-block, .form-group .info-block {
+  @include fontLato(#718096);
+  background-color: $white;
+  border: none;
+  padding: 6px 8px 3px;
+  a {
+    text-decoration: underline;
+  }
+}
+
+.module .module-content .dataset-field-group-header{
+  h1{
+    margin-top: 60px;
+    color: $labelColor;
+    margin-bottom: 0px;
+  }
+  hr{
+
+    margin-top: 10px;
+    border-top-color: $tagGreyDarker;
+    border-top-width: 2px;
+  }
+}

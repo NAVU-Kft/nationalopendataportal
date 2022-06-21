@@ -1,0 +1,41 @@
+{% ckan_extends %}
+
+{% block subtitle %}{{ _('All Users') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{{ h.nav_link(_('Users'), named_route='user.index') }}</li>
+{% endblock %}
+
+{% block pre_primary %}
+<div class="col-xs-12">
+  {% snippet 'user/snippets/user_search.html', q=q %}
+  
+  <article class="module">
+    <div class="module-content">
+      <h2 class="module-heading">
+        {{ _('Users') }}
+      </h2>
+        <ul class="user-list">
+            {% for user in page.items %}
+              <li>{{ h.linked_user(user['name'], maxlength=0, avatar=40) }}<br/>
+                <span>
+                  {% if user[0]['sysadmin'] %}
+                  {{ _('Administrator') }}
+                  {% else %}
+                  {{ _('User') }}
+                  {% endif %}
+                </span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {{ page.pager(q=q, order_by=order_by) }}
+  </article>
+</div>
+{% endblock %}
+
+{% block primary %}
+{% endblock %}
+
+{% block secondary %}
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "page.html" %}
+{% import 'macros/page_content.html' as mc with context%}
+
+{% block breadcrumb_content %}
+<li class="active">{% link_for _('News'), 'hutemplate.news' %}</li>
+{% endblock %}
+
+{% block primary %}
+<div class="col-xs-12">
+<article class="module" role="main">
+  <h3 class="green">{{ _('News') }}</h3>
+  {% set news = h.get_recent_blog_posts_by_type(number=10, type="NEWS") %}
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <div class="row">
+        {% for post in news[0:1] %}
+        {% snippet 'hutemplate/snippets/news_big.html', post=post %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-md-3 col-xs-12">
+      <div class="row">
+        {% for post in news[1:3] %}
+        {% snippet 'hutemplate/snippets/news_medium.html', post=post %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-md-3 col-xs-12">
+      <div class="row">
+        {% for post in news[3:] %}
+        {% snippet 'hutemplate/snippets/news_small.html', post=post %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</article>
+</div>
+<div class="news-split-title">
+  <h3>Hírlevél</h3>
+  <div class="subtext">Nagyon jó a hírlevél, iratkozz fel és boldog leszel!</div>
+  <a class="btn btn-primary">{{ _('Subscribe') }}</a>
+</div>
+<div class="col-xs-12">
+<article class="module" role="main">
+  <h3 class="green">{{ _('Conferences') }}</h3>
+  {% set conferences = h.get_recent_blog_posts_by_type(number=4, type="CONFERENCES") %}
+  <div class="row">
+    {% for post in conferences %}
+      <div class="col-md-3 col-xs-6">
+      {% snippet 'hutemplate/snippets/conference_card.html', post=post %}
+      </div>
+    {% endfor %}
+  </div>
+</article>
+</div>
+<div class="col-xs-12">
+<article class="module" role="main">
+  <h3 class="green">{{ _('Applications') }}</h3>
+  {% set conferences = h.get_recent_blog_posts_by_type(number=4, type="APPLICATIONS") %}
+  <div class="row">
+    {% for post in conferences %}
+      <div class="col-md-3 col-xs-6">
+      {% snippet 'hutemplate/snippets/conference_card.html', post=post %}
+      </div>
+    {% endfor %}
+  </div>
+</article>
+</div>
+<div class="col-xs-12">
+<article class="module" role="main">
+  <h3 class="green">{{ _('New data and features') }}</h3>
+  {% set conferences = h.get_recent_blog_posts_by_type(number=3, type="NEW_DATA_AND_FEATURES") %}
+  {% for post in conferences %}
+    {% snippet 'hutemplate/snippets/blogpost_row.html', post=post %}
+  {% endfor %}
+</article>
+</div>
+{% endblock %}
+
+{% block secondary %}{% endblock %}

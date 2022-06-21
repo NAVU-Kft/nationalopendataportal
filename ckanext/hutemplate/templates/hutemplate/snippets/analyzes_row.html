@@ -1,0 +1,19 @@
+{% set post=post %}
+
+{% if h.ckan_version().split('.')[1] | int >= 9 %}
+{% set url=h.url_for('pages.blog_show', page= post.name) %}
+{% else %}
+{% set url=h.url_for(controller='ckanext.pages.controller:PagesController', action='blog_show', page='/' + post.name) %}
+{% endif %}
+{% set link_info = h.blog_link(post) %}
+<div class="analyzes-row">
+    <a href="{{link_info['link'] or url }}"  target="{{link_info['target'] or '_self'}}">
+        <h2>
+            <span class="analyzes-line"></span>
+            {{ post.title or post.name }}
+        </h2>
+        {% if post.image %}
+        <img alt="{{ post.title or post.name }}" src="{{post.image}}" />
+        {% endif %}
+    </a>
+</div>

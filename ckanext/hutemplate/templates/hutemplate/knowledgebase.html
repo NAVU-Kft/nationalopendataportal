@@ -1,0 +1,55 @@
+{% extends "page.html" %}
+{% import 'macros/page_content.html' as mc with context%}
+
+{% block breadcrumb_content %}
+<li class="active">{% link_for _('Knowledge base'), 'hutemplate.knowledgebase' %}</li>
+{% endblock %}
+
+{% block primary %}
+<div class="col-xs-12">
+  <article class="module" role="main">
+    <h3 class="green">{{ _('Educational materials') }}</h3>
+    <div class="row">
+      <div class="col-md-8 col-xs-12">
+        {% set posts = h.get_recent_blog_posts_by_type(number=3, type="KNOWLEDGEBASE_MATERIALS") %}
+        {% for post in posts %}
+          {% snippet 'hutemplate/snippets/blogpost_row.html', post=post %}
+        {% endfor %}
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <div class="education-card">
+          <img src="{{ h.url_for_static('img/lightbulb.svg') }}" />
+          <h2>
+            {{ _('Educational materials') }}
+          </h2>
+          <p>{{ _('Video, podcast, webinar, online publications') }}</p>
+          <a class="btn btn-primary col-sm-12">{{ _('Show me') }}</a>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+  <div class="page-split-title">{{ _('Standards, vocabularies') }}</div>
+<div class="col-xs-12">
+  <article class="module" role="main">
+    <h3 class="green">{{ _('International standards') }}</h3>
+    {% set page = h.get_page_for_type('STANDARDS_VOCABULARIES') %}
+    {{ mc.page_content(page) }}
+  </article>
+</div>
+{#
+<div class="page-split-title">{{ _('Professional publications') }}</div>
+<div class="col-xs-12">
+  <article class="module" role="main">
+    <h3 class="green">{{ _('Methodological aids') }}</h3>
+    {% set posts = h.get_recent_blog_posts_by_type(number=3, type="KNOWLEDGEBASE_METHODOLOGICAL") %}
+    {% for post in posts %}
+      {% snippet 'hutemplate/snippets/blogpost_row.html', post=post %}
+    {% endfor %}
+  </article>
+</div>
+#}
+{% endblock %}
+
+{% block secondary %}{% endblock %}
+ 

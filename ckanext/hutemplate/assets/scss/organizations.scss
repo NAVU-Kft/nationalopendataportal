@@ -1,0 +1,48 @@
+@import 'variables';
+
+dl{
+    dt{
+        @include fontPoppins800($secondary900);
+        font-size: 12px;
+        line-height: 18px;
+    }
+    dd{
+        @include label1($secondary300);
+    }
+    & dt + dd{
+        margin-bottom: 25px;
+    }
+}
+
+.organizations{
+    h4{
+        @include headline4($secondary900);
+        margin-top: 0;
+    }
+    .organization-list{
+        .organization-item{
+            padding: 15px 0;
+            border-top: 1px solid $secondary50;
+            
+            a{
+                display: flex;
+            }
+            .organization-image{
+                height: 40px;
+                width: 40px;
+                border-radius: 5px;
+                background-repeat: no-repeat;
+                background-position: center;
+                margin-right: 10px;
+                background-size: 100%;
+            }
+            .organization-name{
+                @include label1;
+                margin: 0;
+            }
+            .organization-datasets{
+                @include label2($secondary300);
+            }
+        }
+    }
+}

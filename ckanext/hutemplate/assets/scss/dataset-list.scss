@@ -1,0 +1,68 @@
+@import "variables";
+
+.dataset-item, .dataset-item:last-of-type {
+    .dataset-item-content{
+        @include card;
+        padding: 25px;
+        &:hover, &:focus{
+          background: $whiteHover;
+          cursor: pointer;
+        }
+    }
+}
+.dataset-item{
+  border-bottom: none;
+  margin-bottom: 20px;
+  padding-bottom: 0px;
+  .dataset-heading{
+    @include fontPoppins700;
+    font-size: 24px;
+    line-height: 36px;
+    margin-bottom: 0;
+    a{
+      color: $secondary900
+    }
+  }
+  .dataset-resources{
+    @include tagline($textColor);
+    margin-top: 0;
+    margin-bottom: 20px;
+    opacity: 0.5;
+    & > li + li{
+      padding-left: 27px;
+    }
+  }
+  .dataset-organization{
+    margin: 0;
+    @include fontLato900($secondary900);
+    font-size: 14px;
+    line-height: 17px;
+    float: left;
+  }
+  .dataset-createdate{
+    @include tagline($textColor);
+    opacity: 0.5;
+    float: right;
+  }
+  .dataset-description{
+    margin: 0;
+    @include fontLato900($secondary900);
+    font-size: 14px;
+    line-height: 17px;
+  }
+  .dataset-content::after{
+    content: ' ';
+    clear: both;
+    display: block;
+  }
+}
+
+small.api-link{
+  @include paragraph;
+  font-family: "Lato", serif !important;
+  font-size: 85%;
+  a{
+    color: #4ddbb0;
+    text-decoration: underline;
+  }
+}

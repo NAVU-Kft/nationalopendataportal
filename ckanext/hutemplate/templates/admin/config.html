@@ -1,0 +1,42 @@
+{% ckan_extends %}
+{% import 'macros/autoform.html' as autoform %}
+{% import 'macros/form.html' as form %}
+
+{% block admin_form %}
+
+{{ form.input('ckan.site_title', id='field-ckan-site-title', label=_('Site Title'), value=data['ckan.site_title'], error=error, classes=['control-medium']) }}
+
+{{ form.input('ckan.site_description', id='field-ckan-site-description', label=_('Site Tag Line'), value=data['ckan.site_description'], error=error, classes=['control-medium']) }}
+
+{{ form.input('ckanext.hutemplate.company_name', id='field-ckan-company-name', label=_('Company name'), value=data['ckanext.hutemplate.company_name'], error=error, classes=['control-medium']) }}
+
+{{ form.input('ckanext.hutemplate.company_address', id='field-ckan-company-address', label=_('Company address'), value=data['ckanext.hutemplate.company_address'], error=error, classes=['control-medium']) }}
+
+{{ form.input('ckanext.hutemplate.company_phone', id='field-ckan-company-phone', label=_('Company phone'), value=data['ckanext.hutemplate.company_phone'], error=error, classes=['control-medium']) }}
+
+{{ form.input('ckanext.hutemplate.company_email', id='field-ckan-company-email', label=_('Company email'), value=data['ckanext.hutemplate.company_email'], error=error, classes=['control-medium']) }}
+
+{{ form.input('ckanext.hutemplate.company_longitude', id='field-ckan-company-longitude', label=_('Map longitude'), value=data['ckanext.hutemplate.company_longitude'], error=error, classes=['control-medium']) }}
+{{ form.input('ckanext.hutemplate.company_latitude', id='field-ckan-company-latitude', label=_('Map latitude'), value=data['ckanext.hutemplate.company_latitude'], error=error, classes=['control-medium']) }}
+
+{#
+{{ form.markdown('ckan.site_about', id='field-ckan-site-about', label=_('About'), value=data['ckan.site_about'], error=error, placeholder=_('About page text')) }}
+
+{{ form.markdown('ckan.site_intro_text', id='field-ckan-site-intro-text', label=_('Intro Text'), value=data['ckan.site_intro_text'], error=error, placeholder=_('Text on home page')) }}
+
+{{ form.textarea('ckan.site_custom_css', id='field-ckan-site-custom-css', label=_('Custom CSS'), value=data['ckan.site_custom_css'], error=error, placeholder=_('Customisable css inserted into the page header')) }}
+
+{{ form.select('ckan.homepage_style', id='field-homepage-style', label=_('Homepage'), options=homepages, selected=data['ckan.homepage_style'], error=error) }}
+#}
+{% endblock %}
+
+
+{% block primary_content_inner %}
+  {{ form.errors(error_summary) }}
+  <form method='post' action="" id="admin-config-form" enctype="multipart/form-data">
+    {{ self.admin_form() }}
+    <div class="form-actions">
+    <button type="submit" class="btn btn-primary" name="save">{{ _('Update Config') }}</button>
+    </div>
+  </form>
+{% endblock %}

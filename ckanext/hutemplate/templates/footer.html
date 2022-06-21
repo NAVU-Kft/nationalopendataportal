@@ -1,0 +1,27 @@
+{% ckan_extends %}
+
+{% block footer_content %}
+{% if c.userobj %}
+<a href="{{ h.url_for(controller='user', action='logout') }}">{{ _('Log out') }}</a>
+{% else %}
+<a href="{{ h.url_for(controller='user', action='login') }}">{{ _('Login') }}</a>
+{% endif %}
+{% set github_url = h.get_github_url()  %}
+{% if github_url%}
+<a href="{{ github_url }}" target="_blank">{{ _('Source') }}</a>
+{% endif %}
+<a href="{{ h.url_for(controller='hutemplate', action='contact') }}">{{ _('Contact') }}</a>
+<a href="https://www.navu.hu/" target="_blank">{{ _('NAVÜ.hu') }}</a>
+<a href="{{ h.url_for(controller='hutemplate', action='faq') }}">{{ _('F.A.Q') }}</a>
+<a href="{{ h.url_for(controller='hutemplate', action='disclaimers') }}">{{ _('Disclaimers') }}</a>
+<a href="{{ h.url_for(controller='hutemplate', action='privacypolicy') }}">{{ _('Privacy policy') }}</a>
+<a href="{{ h.url_for(controller='hutemplate', action='imprint') }}">{{ _('Imprint') }}</a>
+{#
+<div class="language-selector hidden-xs hidden-sm">
+    {% snippet "snippets/language_selector.html" %}
+</div>
+#}
+{% endblock %}
+  
+{% block footer_debug %}
+{% endblock %}

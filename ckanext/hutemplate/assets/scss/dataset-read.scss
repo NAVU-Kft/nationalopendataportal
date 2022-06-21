@@ -1,0 +1,200 @@
+@import "variables";
+@import "search-mixin";
+@import "table";
+
+@mixin _resourceItemDropdown{
+  .resource-item {
+    @include cardSmall;
+    .heading {
+      @include fontPoppins800($secondary900);
+      font-size: 18px;
+      line-height: 27px;
+      margin-left: 25px;
+      width: calc(100% - 98px);
+    }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    height: 78px;
+    margin-bottom: 15px;
+    .btn-group {
+      top: 15px;
+      right: 25px;
+    }
+    @media (max-width: 991px) {
+      .btn-group {
+        display: inline-block;
+      }
+    }
+    .btn {
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      margin: 0;
+      margin-right: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .feather-icon:last-child {
+        margin-right: 0px;
+        font-size: 16px;
+        width: 16px;
+        font-weight: bold;
+      }
+    }
+
+    .dropdown-menu {
+      left: unset;
+      margin: 15px 0 0 0;
+      width: 100%;
+      
+      padding: 14px 12px;
+      background: $white;
+      border-radius: 8px;
+      border: none;
+      box-shadow: 0px 0px 1px rgba(12, 26, 75, 0.2), 0px 1px 3px rgba(50, 50, 71, 0.1);
+      & > li {
+        @include paragraph($textColor);
+        border-radius: 6px;
+        padding: 8px 11px;
+        margin-bottom: 4px;
+        &:hover{
+          @include paragraph($white);
+          background: $primary300;
+        }
+        & > a, & > a:hover{
+          color: unset;
+          background-color: unset;
+          padding: 0;
+          i{
+            margin-right: 15px;
+            color: $primary300
+          }
+        }
+        & > a:hover{
+          i{
+            color: $white
+          }
+        }
+      }
+    }
+  }
+}
+
+.module p {
+  @include paragraph;
+}
+
+.manage-package {
+  float: right;
+}
+
+.package-read-input-group {
+  @include searchInputGroup;
+  margin-bottom: 54px;
+}
+
+.add-to-group{
+  .select2-container{
+    margin-bottom: 20px;
+  }
+}
+
+.api-icons{
+  i{
+    font-size: 30px;
+    color: $textColor;
+  }
+}
+
+.module-resource{
+  border-bottom: none;
+  .actions{
+    right: 0px;
+  }
+}
+.additional-info,
+.module .package-read,
+.module.module-resource {
+  h1 {
+    @include fontPoppins500($secondary900);
+    font-size: 30px;
+    line-height: 45px;
+    margin-bottom: 5px;
+  }
+  h2 {
+    @include fontPoppins500($secondary900);
+    font-size: 30px;
+    line-height: 45px;
+    margin-bottom: 25px;
+  }
+  .labels {
+    display: flex;
+    flex-direction: column;
+    @media (min-width: 768px) {
+      flex-direction: row;
+      & > .label + .label {
+        margin-left: 15px;
+      }
+    }
+    .label {
+      @include tag;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      @media (min-width: 768px) {
+        margin-bottom: 25px;
+      }
+      .subtext {
+        @include fontPoppins500;
+        margin-right: 14px;
+      }
+      &.dataset-private {
+        margin-right: 0px;
+      }
+    }
+  }
+  .notes {
+    margin-bottom: 77px;
+  }
+
+  .resources {
+    margin-bottom: 62px;
+    @include _resourceItemDropdown()
+  }
+}
+
+.excel-export{
+  @include _resourceItemDropdown()
+}
+
+.module, .primary{
+  .additional-info {
+    @include cms-table;
+    thead th {
+      width: 70%;
+      &:first-child {
+        width: 30%;
+      }
+    }
+    th {
+      @media (min-width: 768px) {
+        width: 30%;
+      }
+    }
+    td {
+      @media (min-width: 768px) {
+        width: 70%;
+      }
+    }
+  }
+}
+
+.js .dropdown .open .dropdown-menu {
+  display: block;
+}
+
+a.tag{
+  @include tag-small;
+}

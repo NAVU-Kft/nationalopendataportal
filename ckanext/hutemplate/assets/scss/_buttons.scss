@@ -1,0 +1,119 @@
+@import "variables";
+
+@mixin hoverStyle($color, $fillHoverColor){
+  box-shadow: 0px 4px 5px rgba(44, 186, 143, 0.3);
+  background-color: $fillHoverColor;
+  border-color: $color;
+  color: $white;
+}
+
+@mixin buttonStyle($color, $fillHoverColor, $secondaryColor) {
+  background-color: $color;
+  border-color: $color;
+  color: $white;
+  &:hover, &:active {
+    @include hoverStyle($color, $fillHoverColor);
+  }
+  &.btn-soft {
+    background-color: $secondaryColor;
+    border-color: $secondaryColor;
+    color: $color;
+    &:hover {
+      box-shadow: 0px 4px 5px rgba(44, 186, 143, 0.3);
+    }
+  }
+  &.btn-outline {
+    background-color: $white;
+    border-color: $color;
+    color: $color;
+    &:hover {
+      box-shadow: none;
+      background-color: $secondaryColor;
+    }
+  }
+}
+
+@mixin dangerButtonsStyle{
+  background-color: $white;
+    border-color: $dangerDefault;
+    color: $dangerDefault;
+    &:hover {
+      box-shadow: none;
+      color: $dangerDefault;
+      border-color: $dangerDefault;
+      background-color: $dangerLight;
+    }
+}
+
+.open > .dropdown-toggle.btn-primary,
+.open > .dropdown-toggle.btn-primary:hover,
+.open > .dropdown-toggle.btn-primary:focus{
+  @include hoverStyle($primary300, $primary400);
+}
+
+a.btn,
+.btn {
+  border-radius: 50vh;
+  @include fontPoppins700;
+  font-size: 16px;
+  line-height: 14px;
+  padding: 15px 24px;
+  
+  .feather-icon{
+    margin-right: 0;
+  }
+
+  &.btn-lg {
+    height: 45px;
+    font-size: 18px;
+  }
+
+  &.btn-sm, &.btn-xs {
+    height: 31px;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 7.5px 24px;
+  }
+  &.btn-multiple-remove{
+    font-size: 14px;
+    padding: 5px 12px;
+    &.btn-default{
+      @include dangerButtonsStyle;
+    }
+  }
+
+  &.btn-primary, &.btn-default {
+    @include buttonStyle($primary300, $primary400, $highlightLight);
+  }
+  &.btn-danger {
+    @include dangerButtonsStyle;
+  }
+  &.btn-fullwidth{
+    width: 100%
+  }
+
+  &.btn-boxy {
+    border-radius: 10px;
+  }
+
+  svg {
+    vertical-align: middle;
+  }
+}
+
+.btn-group{
+  .btn.btn-sm{
+    padding: 4.5px 24px
+  }
+}
+
+.input-group-btn {
+  .btn {
+    background-color: $white;
+  }
+}
+
+
+.js .image-upload .btn-remove-url{
+  padding: 5px 12px;
+}

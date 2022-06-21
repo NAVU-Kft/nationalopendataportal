@@ -1,0 +1,23 @@
+@import "variables";
+.error-page{
+    display: flex;
+    width: 100%;
+    padding-top: 200px;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+
+    h1{
+        @include fontPoppins700($secondary300);
+        font-size: 50px;
+        line-height: 75px;
+        letter-spacing: 0.05em;
+    }
+    p{
+        @include fontPoppins700($secondary200);
+        font-size: 30px;
+        line-height: 40px;
+    }
+}

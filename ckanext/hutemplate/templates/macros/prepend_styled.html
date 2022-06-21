@@ -1,0 +1,14 @@
+{% import 'macros/form.html' as form %}
+{% macro huprepend(name, id='', label='', prepend='', value='', placeholder='', type='text', error="", classes=[], attrs={'class': 'form-control'}, is_required=false) %}
+{# We manually append the error here as it needs to be inside the .input-group block #}
+{% set classes = (classes|list) %}
+{% do classes.append('error') if error %}
+{%- set extra_html = caller() if caller -%}
+{% call form.input_block(id or name, label or name, error='', classes=classes, extra_html=extra_html, is_required=is_required) %}
+<div class="input-group">
+{% if prepend %}<span class="input-group-addon">{{ prepend }}</span>{%- endif -%}
+<input id="{{ id or name }}" type="{{ type }}" name="{{ name }}" value="{{ value | empty_and_escape }}" placeholder="{{ placeholder }}" {{ form.attributes(attrs) }} />
+</div>
+{% if error and error is iterable %}<span class="error-block">{{ error|join(', ') }}</span>{% endif %}
+{% endcall %}
+{% endmacro %}

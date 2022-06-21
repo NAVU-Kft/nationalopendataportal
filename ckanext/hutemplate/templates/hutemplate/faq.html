@@ -1,0 +1,42 @@
+{% extends "page.html" %}
+
+{% block breadcrumb_content %}
+<li class="active">{% link_for _('F.A.Q'), 'hutemplate.faq' %}</li>
+{% endblock %}
+
+{% block primary %}
+{% asset 'hutemplate/hutemplate-js' %}
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 faq" data-module="hutemplate_faq_search">
+{#
+    <div class="input-group search-input-group" >
+      <input aria-label="{{ _('Search...') }}" id="field-giant-search" type="text" class="form-control input-lg" name="q" value="{{ query }}" autocomplete="off" placeholder="{{ _('Search...') }}">
+      <span class="input-group-btn">
+        <button class="btn btn-default btn-lg" type="submit" value="search" aria-label="{{_('Submit')}}">
+          <i class="feather-icon icon-search"></i>
+        </button>
+      </span>
+    </div>
+#}
+    <h1>{{ _('Frequently Asked Questions')}}</h1>
+    {% snippet 'snippets/info.html', hasBorder=true, faquadata=[
+    ['Ki szolgáltatja az adatokat a Nemzeti Közadatportálra?', 'A Nemzeti Adatvagyon Ügynökséggel (NAVÜ) együttműködésben lévő, közfeladatot ellátó szervek szolgáltatják az adatokat. A NAVÜ célja a partnerségben együttműködő szervek listájának folyamatos bővítése, garantálva ezzel a közadatok rendelkezésre állásának szélesebb körét. '],
+    ['Honnan lehet tudni, hogy hiteles az adatforrás?', 'A Nemzeti Közadatportálon nyilvántartott adatkészletek forrásainak megbízhatóságát az adatszolgáltatók garantálják.  Azt, hogy az adatok az adatszolgáltató szervektől származnak, a Nemzeti Adatvagyon Ügynökség garantálja, ugyanakkor nem vállalja a felelősséget az adatforrások minőségéért.'],
+    ['Mire használhatóak a nyílt közadatok?', 'A nyílt közadatok legfőbb tulajdonsága, hogy olyan adatok, amelyeket bárki szabadon - szerzői jogi, szabadalmi, vagy bármely más korlátozásoktól mentes módon -, megismerhet, felhasználhat vagy újrahasznosíthat. A nyílt adatok tehát bárki számára elérhetőek, így ingyenes felhasználásuk fontos gazdasági lehetőséget - újfajta erőforrást - biztosít a vállalkozásoknak és a magánszemélyeknek. A nyílt kormányzati adatok újrahasznosításával, a nyílt közadatok saját adatokkal való összekapcsolásával például következtetéseket lehet tenni jövőbeni eseményekre, illetve trendekre, mely által a közadatokat újrahasznosító szervezetek felkészültebben hozhatnak meg döntéseket.'],
+    ['Személyes adatok is találhatóak a Nemzeti Közadatportálon? ', 'A Nemzeti Közadatportálon nem szerepelnek személyes adatok vagy olyan adatok, amelyekből kikövetkeztethetőek személyes adatok, mert azok feltöltését az adatvédelmi jogszabályok tiltják. '],
+    ['Üzleti titok vagy egyéb, bizalmasnak minősülő információ vagy adat található a portálon?', 'A Nemzeti Közadatportálra nem kerülnek fel olyan adatok, amelyek felhasználása mások jogát vagy jogos érdekeit sértené. A különféle (üzleti, adó-, banki stb.) titkokhoz és a bizalmasnak minősülő információk körébe eső egyéb adatokhoz való hozzáférés jogilag korlátozott, így azok fogalmilag sem számítanak nyílt közadatnak.'],
+    ['Hogyan hasznosíthatóak a nyílt közadatok?', 'Megfelelően katalogizált és szabványos nyílt közadatokkal már önmagában is piackutatási idő, energia és pénz spórolható meg. Ezen felül a nyílt adatokat más adatokkal összekapcsolva, illetőleg megfelelő kontextusba helyezve új információk nyerhetők, amelyek jelentős - pénzben is mérhető - hozzáadott értéket képviselhetnek egy új szolgáltatás kialakításakor. A nyílt adatokat publikáló portálokon világszerte a legnépszerűbb adatok a statisztikai adatok, a jogi adatbázisok, a térképes adatok, az ingatlan-nyilvántartási, a meteorológiai, közlekedési, környezetii adatok valamint az adó- és céginformációk.'],
+    ['Milyen formában érhetőek el az adatkészletek a Nemzeti Közadatportálon?', 'A Nemzeti Közadatportál tartalomfejlesztése során kiemelt szempont, hogy az elérhető adatok gépi úton, vagyis szoftveresen könnyen feldolgozhatóak legyenek. Az ilyen jellegű formátumokat (pl.: CSV, XML, XLSX, JSON) a portál korlátozás nélkül támogatja. Az adatkészletet rendelkezésre bocsátó szervezet több, általa választott formában is közzéteheti azt. '],
+    ['Mire használhatók egy adatkészlet adatai?', 'Az adatkészlet egymáshoz kapcsolódó adatok gyűjteménye, amely különálló elemekből áll, de amely egységként kezelhető, és letölthető, illetve megnyitható egy vagy több formátumban. Az adatkészlet összekapcsolja és csomagba gyűjti az egy adott témához köthető adatforrásokat, és ezáltal egy megfelelő értelmezést ad nekik. Az így kapott (alap)értelmezés kaphat egy másik értelmezést is, ha az eredeti adatkészlet adatait egy másik adatkészlet adataival kombinálják. '],
+    ['Lehetőség van adatok feltöltésére is?', 'A Nemzeti Közadatportálra csak a Nemzeti Adatvagyon Ügynökség és - külön megállapodás szerint - a közfeladatot ellátó szervek tölthetnek fel adatokat.'],
+    ['Ki kezeli a Nemzeti Közadatportált?', 'A Nemzeti Közadatportál tartalomfejlesztését és üzemeltetését a Nemzeti Adatvagyon Ügynökség jogszabály rendelkezése  (<a href="https://njt.hu/jogszabaly/2021-607-20-22">607/2021. (XI. 5.) Korm. rendelet 34. § (5) bekezdés</a>) alapján végzi. '],
+    ['Ki tárolja az adatokat?', 'A tárolás főszabály szerint az illető adatkészletet biztosító közfeladatot ellátó szerv vagy az általa megbízott adatfeldolgozó feladata. A Nemzeti Közadatportál kapcsolódási pontot biztosít a felhasználó számára, hogy elérje a számára szükséges és értékes adatokat.'],
+    ['Kihez lehet fordulni kérdés esetén?', 'További információ: <a href="mailto:info@navu.hu" target="_blank"></a>info@navu.hu</a>']
+    ] %}
+  </div>
+</div>
+{% endblock %}
+
+{% block secondary %}{% endblock %}
+
+ 

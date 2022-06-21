@@ -1,0 +1,18 @@
+{% ckan_extends %}
+
+{% block content_primary_nav %}    
+  <ul class="nav nav-tabs">
+    {{ h.build_nav_icon('dashboard.index', _('News feed'), icon='list') }}
+    {{ h.build_nav_icon('dashboard.datasets', _('My Datasets'), icon='sitemap') }}
+    {{ h.build_nav_icon('dashboard.organizations', _('My Organizations'), icon='building-o') }}
+  </ul>
+{% endblock %}   
+
+{% block page_header %}
+  <header class="module-content page-header hug">
+    <div class="content_action">
+      {% link_for _('Profile settings'), named_route='user.edit', id=user.name, class_='btn btn-primary btn-sm', icon='cog' %}
+    </div>
+    {{ self.content_primary_nav() }}
+  </header>
+{% endblock %}

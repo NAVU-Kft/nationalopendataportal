@@ -1,0 +1,25 @@
+{% import 'macros/page_content.html' as mc with context%}
+
+<article class="row" role="main">
+  {% set posts = h.get_recent_blog_posts_by_type(number=3, type="NEWS") %}
+  {% for post in posts %}
+    {% if h.ckan_version().split('.')[1] | int >= 9 %}
+      {% set url=h.url_for('pages.blog_show', page='/' + post.name) %}
+    {% else %}
+      {% set url=h.url_for(controller='ckanext.pages.controller:PagesController', action='blog_show', page='/' + post.name) %}
+    {% endif %}
+    <div class="col-xs-12 col-md-4 blog-post-list-item h-100" onclick="window.location = '{{url}}'">
+      <div class="post-image col-xs-12 p-0" style="background-image: url({{post.image}});"></div>
+      <p class="post-title">{{ post.title or post.name }}</p>
+      <p class="post-content">{{ h.markdown_extract(post.content) }}</p>
+    </div>
+  {% endfor %}
+  <div class="col-xs-12 mt-5">
+    <a class="btn btn-primary hidden-xs" href="{{ h.url_for(controller='hutemplate', action='news_all') }}">{{_('To all news')}}
+      <i class="feather-icon icon-arrow-right"></i>
+    </a>
+    <a class="btn btn-primary btn-sm visible-xs-block" href="{{ h.url_for(controller='hutemplate', action='news_all') }}">{{_('To all news')}}
+      <i class="feather-icon icon-arrow-right"></i>
+    </a>
+  </div>
+</article>

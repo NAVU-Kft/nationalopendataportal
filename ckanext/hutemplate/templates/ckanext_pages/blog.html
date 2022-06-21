@@ -1,0 +1,44 @@
+{% ckan_extends %}
+
+{% block breadcrumb_content %}
+  <li>{% link_for h.blog_name_from_id(c.page.blog_type), named_route='hutemplate.news_category', category_name_or_id=h.blog_name_from_id(c.page.blog_type) %}</li>
+  <li class="active">{% link_for c.page.title, named_route='hutemplate.news_show', page=c.page.name %}</li>
+{% endblock %}
+
+{% block toolbar_action %}
+  {% if h.check_access('ckanext_pages_update') %}
+    {% if h.ckan_version().split('.')[1] | int >= 9 %}
+
+      {% snippet 'ckanext_pages/snippets/pages_asset.html', name='pages/main-css' %}
+
+      {% link_for _('Edit'), named_route='pages.blog_edit', page=c.page.name, class_='btn btn-primary btn-sm pull-right', icon=h.pages_get_plus_icon() %}
+    {% else %}
+      {% link_for _('Edit'), controller='ckanext.pages.controller:PagesController', action='blog_edit', page='/' + c.page.name, class_='btn btn-primary btn-sm pull-right', icon='edit' %}
+    {% endif %}
+
+  {% endif %}
+{% endblock %}
+
+{% block secondary %}{% endblock %}
+{% block primary %}
+  <div class="primary col-xs-12" role="main">
+    {% block primary_content %}
+    <section class="blog-details-container">
+      
+      <h1 class="page-heading">{{ c.page.title }}</h1>
+      {% if c.page.content %}
+        {% set editor = h.get_wysiwyg_editor() %}
+        {% if editor %}
+          <div class="ckanext-pages-content">
+              {{c.page.content|safe}}
+          </div>
+        {% else %}
+          {{ h.render_content(c.page.content) }}
+        {% endif %}
+      {% else %}
+        <p class="empty">{{ _('This page currently has no content') }}</p>
+      {% endif %}
+    </section>
+    {% endblock %}
+  </div>
+{% endblock %}

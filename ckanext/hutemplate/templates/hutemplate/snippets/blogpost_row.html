@@ -1,0 +1,22 @@
+{% set post=post %}
+
+{% if h.ckan_version().split('.')[1] | int >= 9 %}
+{% set url=h.url_for('pages.blog_show', page= post.name) %}
+{% else %}
+{% set url=h.url_for(controller='ckanext.pages.controller:PagesController', action='blog_show', page='/' + post.name) %}
+{% endif %}
+<div class="blogpost-row" onclick="window.location = '{{url}}'">
+    <div class="row">
+        <h2 class="col-xs-6">
+            <a href="{{ url }}">{{ post.title or post.name }}</a>
+        </h2>
+    </div>
+    <div class="row">
+        <div class="blog-content">
+            {{ h.markdown_extract(post.content) }}
+        </div>
+        {% if post.publish_date %}
+        <span class="date text-right">{{ _('Date') }}: {{ h.render_datetime(post.publish_date, '%Y.%m.%d.') }}</span>
+        {% endif %}
+    </div>
+</div>

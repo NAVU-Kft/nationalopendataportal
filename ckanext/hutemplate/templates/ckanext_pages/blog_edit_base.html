@@ -1,0 +1,9 @@
+{% ckan_extends %}
+
+{% block main_content %}
+   {{ self.flash() }}
+   {{ self.toolbar() }}
+   <div class="wrapper no-nav">
+     {{ self.primary_content() }}
+   </div>
+{% endblock %}

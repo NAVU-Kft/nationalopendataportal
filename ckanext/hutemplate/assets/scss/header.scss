@@ -1,0 +1,336 @@
+@import "variables";
+
+.header-text-logo {
+  display: flex;
+  align-items: center;
+}
+
+.header-text {
+  @include fontPoppins700($logoColor);
+  font-size: 22px;
+  line-height: 24px;
+  width: 165px;
+  padding-left: 30px;
+}
+
+.main{
+  margin-top: 0px;
+}
+
+/*mobile first + tablet*/
+.masthead {
+  @include fontPoppins700($white);
+  background: $phoneNavBarColor;
+  min-height: 74px;
+  z-index: 10;
+  width: 100%;
+  border: none;
+  .icon-align-left {
+    font-size: 24px;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 0px;
+    padding-right: 0px;
+    @media (max-width: $breakpointDesktop - 1) {
+      width: 100%;
+    }
+  }
+  .hu-navbar-collapse {
+    width: 100%;
+    position: absolute;
+    top: 64px;
+    z-index: 2;
+  }
+  .hu-navbar-left {
+    float: left;
+  }
+  .navbar-toggle {
+    display: block;
+    margin: 4px 15px;
+  }
+  .header-image {
+    display: none;
+  }
+  .navigation.section {
+    float: none;
+    .nav-pills > li {
+      float: none;
+      & + li{
+        margin-left: 0px;
+      }
+      a{
+        @include fontPoppins700($white);
+        font-size: 18px;
+        line-height: 14px;
+        text-transform: uppercase;
+        border-radius: 0;
+        padding: 40px 20px;
+        background-color: $phoneNavBarColor;
+      }
+      &.active a{
+        background-color: $phoneNavBarActive;
+      }
+    }
+  }
+}
+/*small laptop*/
+@media (min-width: $breakpointDesktop) {
+  .masthead {
+    background: none;
+    color: $secondary900;
+    position: relative;
+    padding: 0px;
+    display: flex;
+    align-items: flex-end;
+    .container {
+      align-items: center;
+    }
+    .navbar-toggle {
+      display: none;
+    }
+    .hu-navbar-collapse {
+      display: block;
+      position: absolute;
+      width: auto;
+      float: right;
+    }
+    .header-image {
+      display: block;
+      padding-top: 10px;
+    }
+    .navigation.section .nav.nav-pills {
+      & > .active > a,
+      & > .active > a:hover,
+      & > .active > a:focus {
+        color: $primary300;
+        background-color: $highlightLight;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1),
+          0px 7px 10px rgba(114, 170, 160, 0.3);
+        border-radius: 15px;
+        z-index: 2;
+        padding: 0px 24px;
+      }
+      & > li > a:focus,
+      & > li > a:hover,
+      & > li > a {
+        @include fontPoppins700($secondary900);
+        font-size: 14px;
+        background-color: transparent;
+        text-transform: uppercase;
+        height: 30px;
+        line-height: 30px;
+        padding: 0;
+        margin: 0;
+      }
+    }
+    .navigation.section .nav.nav-pills {
+      height: 49px;
+      display: flex;
+      align-items: flex-end;
+      & > li + li {
+        margin-left: 25px;
+      }
+      li a:hover,
+      li a:focus {
+        background-color: transparent;
+      }
+      li.active a {
+        color: $primary300;
+        background-color: $highlightLight;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1),
+          0px 7px 10px rgba(114, 170, 160, 0.3);
+        border-radius: 15px;
+        z-index: 2;
+        padding: 0px 24px;
+      }
+    }
+  
+    .hu-navbar-collapse {
+      padding: 0;
+      position: relative;
+      top: unset;
+    }
+    a {
+      color: $secondary900;
+      display: flex;
+    }
+  }
+}
+/* wide screen */
+@media (min-width: $breakpointWideScreen) {
+  .masthead {
+    height: 100px;
+    .container {
+      display: block;
+    }
+    .navigation .nav-pills {
+      & > li + li {
+        margin-left: 28px;
+      }
+    }
+  }
+}
+
+.site-search {
+  display: none;
+}
+.module > .page-header {
+  margin-top: 0px;
+}
+.no-nav .page-header,
+.page-header {
+  background: none;
+  border: none;
+  padding-left: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  @media (min-width: $breakpointDesktop) {
+    margin-bottom: 20px;
+    height: 50px;
+    background-color: $tagGrey;
+    border-radius: 17px;
+  }
+  &::before, &::after{
+    content: unset;
+  }
+  .content_action{
+    order: 2;
+    margin-top: 23px;
+    margin-right: 0px;
+    width: 100%;
+    @media (min-width: $breakpointDesktop) {
+      margin-top: 0px;
+      margin-right: 10px;
+      width: unset;
+    }
+  }
+  .nav-tabs {
+    order: 1;
+    border: none;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 0;
+    background-color: $tagGrey;
+    border-radius: 17px;
+    @media (min-width: $breakpointDesktop) {
+      background: none;
+      width: unset;
+      margin: 0 21px;
+    }
+    & > li {
+      @media (max-width: 991px){
+        float: left;
+      }
+    }
+    & > li + li{
+      margin-left: 25px;
+      @media (min-width: $breakpointTablet) {
+        margin-left: 50px;
+      }
+    }
+    li a, li.active a {
+      @include fontLato700($secondary900);
+      white-space: nowrap;
+      font-size: 14px;
+      line-height: 17px;
+      padding: 10px 0 0;
+      @media (min-width: $breakpointDesktop) {
+        padding: 16.5px 0 0;
+      }
+      margin: 0;
+      border: none;
+      background-color: unset;
+      &:hover{
+        background-color: unset;
+        border: none;
+      }
+      &::after {
+        content: " ";
+        border: 2px solid transparent;
+        display: block;
+        margin-top: 8px;
+        @media (min-width: $breakpointDesktop) {
+          margin-top: 15px;
+        }
+        border-radius: 4px;
+      }
+    }
+    li.active a {
+      color: $primary400;
+      &::after {
+        border-color: $primary400;
+        background-color: $primary400;
+      }
+    }
+  }
+}
+
+.account-masthead .account.authed .image img.user-image{
+  border-radius: 50vw;
+}
+
+.user-image {
+  .user-text{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  font-size: 50px;
+  @include fontPoppins600($secondary400);
+  display: inline-block;
+  background-color: $secondary50;
+  vertical-align: middle;
+  border-radius: 50vw;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  
+}
+span.user-image{
+  width: 100%;
+  padding-top: 100%;
+}
+
+
+.module.context-info{
+  .module-content{
+    .image{
+      margin-bottom: 25px;
+    }
+    h1{
+      @include fontPoppins600($secondary900);
+      font-size: 18px;
+      line-height: 27px;
+      margin-bottom: 0px;
+      word-break: keep-all;
+      hyphens: manual;
+    }
+    .info{
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid $secondary50;
+      dt{
+        @include fontPoppins800($secondary900);
+        font-size: 12px;
+        line-height: 18px;
+      }
+      dd{
+        @include fontLato600($secondary300);
+        font-size: 13px;
+        line-height: 16px;
+      }
+    }
+  }
+}

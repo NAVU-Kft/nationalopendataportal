@@ -1,0 +1,32 @@
+{#
+Renders the login form.
+
+action        - The url that the form should be submitted to.
+error_summary - A tuple/list of form errors.
+
+Example:
+
+  {% snippet "user/snippets/login_form.html", action=g.login_handler, error_summary=error_summary %}
+
+#}
+{% import 'macros/form.html' as form %}
+
+{% set username_error = true if error_summary %}
+{% set password_error = true if error_summary %}
+
+<form action="{{ action }}" class="login-form" method="post">
+  {% for message in h.flash.pop_messages() | list %}
+    <div class="alert fade in {{ message.category }}">
+      {{ h.literal(message) }}
+    </div>
+  {% endfor %}
+  {{ form.errors(errors=error_summary) }}
+
+  {{ form.input('login', label=_("Username"), id='field-login', value="", error=username_error, classes=["control-medium"]) }}
+
+  {{ form.input('password', label=_("Password"), id='field-password', type="password", value="", error=password_error, classes=["control-medium"]) }}
+
+  <div class="form-actions">
+    <button class="btn btn-primary" type="submit">{{ _('Login') }}<i class="feather-icon icon-arrow-right"></i></button>
+  </div>
+</form>

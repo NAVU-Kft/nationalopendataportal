@@ -1,0 +1,41 @@
+@import "variables";
+
+.blog-details-container {
+  .post-content {
+    p {
+      @include fontLato500();
+      img {
+        width: 100% !important;
+        height: unset !important;
+      }
+    }
+  }
+  .page-heading{
+    @include fontPoppins700($secondary900);
+    font-size: 24px;
+    line-height: 36px;
+  };
+  .muted-date{
+    @include fontLato500();
+  }
+}
+.module-content.pages{
+  .page_primary_action{
+    margin-bottom: 25px;
+  }
+  .page-list-item{
+    @include card;
+    padding: 20px;
+    cursor: pointer;
+    margin-bottom: 25px;
+    h3, h3 a{
+      @include fontPoppins800($secondary900);
+      font-size: 18px;
+      line-height: 27px;
+      margin: 0;    
+    }
+    &:hover{
+      background-color: $whiteHover;
+    }
+  }
+}

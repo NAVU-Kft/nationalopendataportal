@@ -1,0 +1,19 @@
+{% set organizations = h.get_featured_organizations(9) %}
+
+<div class="row my-4">
+  {% for organization in organizations %}
+  <div class="col-md-4 col-xs-12 mb-4">
+    {% snippet 'snippets/organization_item.html', organization=organization, truncate=50, truncate_title=35 %}
+  </div>
+  {% endfor %}
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <a class="btn btn-primary hidden-xs" href="{{ h.url_for(controller='organization', action='index') }}">{{_('All organizations')}}
+      <i class="feather-icon icon-arrow-right"></i>
+    </a>
+    <a class="btn btn-primary btn-sm visible-xs-inline-block" href="{{ h.url_for(controller='organization', action='index') }}">{{_('All organizations')}}
+      <i class="feather-icon icon-arrow-right"></i>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+@import "variables";
+@import "cms-content";
+@import "table";
+@import 'full-width-splitter';
+@import '../css/fonts';
+
+.cke_panel_list{
+    .cke_panel_listItem{
+        @include cms-content;
+        div.page-split-title{
+            @include fontPoppins700($textColor);
+            background: $tagGrey;
+        }
+    }
+}
+.cke_editable{
+    @include cms-content;
+    @include cms-table;
+    div.page-split-title{
+        @include fontPoppins700($textColor);
+    
+        padding: 40px 0px;
+        font-size: 20px;
+        text-align: center;
+        @media (min-width: 768px)
+        {
+            padding: 67px 0px 63px;
+            font-size: 40px;
+        }
+        background: $tagGrey;
+    }
+}

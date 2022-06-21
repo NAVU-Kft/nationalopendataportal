@@ -1,0 +1,242 @@
+$primary900: #005025;
+$primary800: #006c3f;
+$primary700: #007c4c;
+$primary600: #008d5a;
+$primary500: #009a66;
+$primary400: #00aa79;
+$primary300: #2cba8f;
+$primary200: #73ceaf;
+$primary100: #abe1ce;
+$primary50: #ddf3ec;
+
+$secondary900: #00156b;
+$secondary800: #142780;
+$secondary700: #1d308c;
+$secondary600: #273a97;
+$secondary500: #2d41a0;
+$secondary400: #4e5cae;
+$secondary300: #6d79bb;
+$secondary200: #969ece;
+$secondary100: #bfc4e2;
+$secondary50: #e6e7f3;
+
+$highlightDefault: #4ddbb0;
+$highlightLight: #e8fff8;
+
+$darkGreen: #0f5f54;
+$textColor: #000930;
+$grayColor: #656D8F;
+$phoneNavBarColor: #0F5F54;
+$phoneNavBarActive: #094A41;
+
+$dangerDefault: #cf4655;
+$dangerLight: #ffe6e4;
+$white: #ffffff;
+$whiteHover: #f7f8f9;
+$tagGrey: #f2f2f2;
+$tagGreyDarker: #ebebeb;
+$subheadline: #aeaeae;
+
+$logoColor: #001056;
+
+$labelColor: #425466;
+$inputColor: #001056;
+$placeholderColor: rgba($inputColor, 0.5);
+$placeholderActiveColor: rgba($inputColor, 0.2);
+
+$breakpoint4k: 1400px;
+$breakpointWideScreen: 1200px;
+$breakpointDesktop: 992px;
+$breakpointTablet: 768px;
+$breakpointPhone: 480px;
+
+@mixin headline1($color: $textColor) {
+  @include fontPoppins700($color);
+  font-size: 50px;
+  line-height: 75px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@mixin headline2($color: $textColor) {
+  @include fontPoppins700($color);
+  font-size: 30px;
+  line-height: 40px;
+}
+
+@mixin headline3($color: $textColor) {
+  @include fontLato($color);
+  font-size: 24px;
+  line-height: 29px;
+}
+
+@mixin headline4($color: $textColor) {
+  @include fontPoppins800($color);
+  font-size: 18px;
+  line-height: 27px;
+}
+
+@mixin headline5($color: $textColor) {
+  @include fontLato900($color);
+  font-size: 18px;
+  line-height: 21.6px;
+}
+
+@mixin headline6($color: $textColor) {
+  @include fontPoppins800($color);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@mixin paragraph($color: $textColor) {
+  @include fontLato($color);
+  font-size: 15px;
+  line-height: 20px;
+}
+
+@mixin tagline($color: $textColor) {
+  @include fontLato600($color);
+  font-size: 14px;
+  line-height: 16.8px;
+}
+
+@mixin label1($color: $textColor) {
+  @include fontLato600($color);
+  font-size: 13px;
+  line-height: 15.6px;
+}
+
+@mixin label2($color: $textColor) {
+  @include fontLato600($color);
+  font-size: 10px;
+  line-height: 20px;
+}
+
+@mixin fa-icon {
+  font: normal normal normal 14px/1 FontAwesome;
+  display: inline-block;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin feather-icon{
+	font-family:"feather-icons";
+	display:inline-block;
+	line-height:1;
+	font-weight:normal;
+	font-style:normal;
+	speak:none;
+	text-decoration:inherit;
+	text-transform:none;
+	text-rendering:auto;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+}
+
+@mixin card {
+  box-shadow: 0px 6px 20px 0px rgba(11, 134, 112, 0.2);
+  border-radius: 17px;
+}
+
+@mixin cardSmall {
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+@mixin fontPoppins($color: $textColor) {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  color: $color;
+}
+
+@mixin fontPoppins500($color: $textColor) {
+  font-family: "Poppins", serif;
+  font-weight: 500;
+  color: $color;
+}
+
+@mixin fontPoppins600($color: $textColor) {
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  color: $color;
+}
+
+@mixin fontPoppins700($color: $textColor) {
+  font-family: "Poppins", serif;
+  font-weight: 700;
+  color: $color;
+}
+
+@mixin fontPoppins800($color: $textColor) {
+  font-family: "Poppins", serif;
+  font-weight: 800;
+  color: $color;
+}
+
+@mixin fontLato($color: $textColor) {
+  font-family: "Lato", serif;
+  font-weight: 400;
+  color: $color;
+}
+
+@mixin fontLato500($color: $textColor) {
+  font-family: "Lato", serif;
+  font-weight: 500;
+  color: $color;
+}
+
+@mixin fontLato600($color: $textColor) {
+  font-family: "Lato", serif;
+  font-weight: 600;
+  color: $color;
+}
+
+@mixin fontLato700($color: $textColor) {
+  font-family: "Lato", serif;
+  font-weight: 700;
+  color: $color;
+}
+
+@mixin fontLato800($color: $textColor) {
+  font-family: "Lato", serif;
+  font-weight: 800;
+  color: $color;
+}
+
+@mixin fontLato900($color: $textColor) {
+  font-family: "Lato", serif;
+  font-weight: 900;
+  color: $color;
+}
+
+@mixin tag() {
+  @include fontPoppins700($textColor);
+  display: inline-block;
+  background: $tagGrey;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 10px;
+  padding: 5px 20px;
+  height: 34px;
+}
+
+@mixin tag-small() {
+  @include fontLato600($textColor);
+  display: inline-block;
+  background: $tagGrey;
+  font-size: 13px;
+  line-height: 18px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  height: 26px;
+  border: none;
+  box-shadow: none;
+  &:hover{
+    background: $tagGrey;
+    color: $textColor;
+    border: none;
+    box-shadow: none;
+  }
+}

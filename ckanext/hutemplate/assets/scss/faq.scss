@@ -1,0 +1,23 @@
+@import 'variables';
+@import 'search-mixin';
+
+.faq{
+    h1{
+        @include fontPoppins800($secondary900);
+        font-size: 36px;
+        line-height: 40px;
+        text-align: center;
+        margin-bottom: 21px;
+    }
+    .search-input-group{
+        @include searchInputGroup;
+        margin-bottom: 41px;
+    }
+    .info-list .panel .panel-heading .panel-title a{
+        font-size: 17px;
+    }
+    .info-list .panel .panel-collapse .panel-body div{
+        font-size: 15px;
+    }
+
+}

@@ -1,0 +1,32 @@
+@import "variables";
+
+.blogpost-row {
+  @include card;
+  padding: 32px 25px 25px;
+  margin-bottom: 25px;
+  h2 {
+    margin: 0px 0px 6px;
+      a{
+        @include fontPoppins700($secondary900);
+        font-size: 20px;
+        line-height: 30px;
+      }
+  }
+  .blog-content{
+    float: left;
+    margin-left: 15px;
+  }
+  .date{
+    float: right;
+    margin-right: 15px;
+  }
+  .blog-content, 
+  .date{
+   @include paragraph($textColor);
+   opacity: 50%;
+  }
+  &:hover, &:focus{
+    background: $whiteHover;
+    cursor: pointer;
+  }
+}

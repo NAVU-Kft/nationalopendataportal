@@ -1,0 +1,23 @@
+{% ckan_extends %}
+{% import 'macros/hu_template_field.html' as f with context%}
+
+{% block package_basic_fields_custom %}
+
+{% for field in h.getHuPackageSchema() %}
+  {{ f.hufield(field) }}
+{% endfor %}
+
+{{ form.input('frequency', label=_('Frekvencia'), id='field-frequency', placeholder=_(''), value=data.frequency, error=errors.frequency, classes=['control-medium']) }}
+
+<div class="control-group">
+    <label class="control-label" for="field-language">{{ _("Nyelv") }}</label>
+    <div class="controls">
+      <select id="field-language" name="language" data-module="autocomplete">
+        {% for language in h.languages()  %}
+          <option value="{{ language }}" {% if language in data.get('language', []) %}selected="selected"{% endif %}>{{ language }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+  
+{% endblock %}

@@ -1,0 +1,34 @@
+msgid "Not Found"
+msgstr ""
+
+msgid "The requested URL was not found on the server. If you entered"
+" the URL manually please check your spelling and try again."
+msgstr ""
+
+msgid "Are you sure you want to purge datasets?"
+msgstr ""
+
+msgid "Are you sure you want to purge organizations?"
+msgstr ""
+
+msgid "Are you sure you want to purge groups?"
+msgstr ""
+
+msgid "{number} datasets have been purged"
+msgstr ""
+
+msgid "{number} organizations have been purged"
+msgstr ""
+
+msgid "{number} groups have been purged"
+msgstr ""
+
+msgid "There are no datasets to purge"
+msgstr ""
+
+msgid "There are no organizations to purge"
+msgstr ""
+
+msgid "There are no groups to purge"
+msgstr ""
+

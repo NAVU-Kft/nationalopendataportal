@@ -1,0 +1,47 @@
+{% set groups = h.get_featured_groups(13) %}
+<div class="row">
+  <div class="landing-page-content col-md-8 col-xs-12">
+    <h2>{{_('Data categories')}}</h2>
+    <p>{% trans %}Az európai adatportálok összetett szűrési lehetőségeket biztosítanak a portálok kereső felületén. A keresés standard kiindulópontjaként az a 13 adatkategória szolgál, melyet az Európai Bizottság 2020.09.23-án közös szabványként határozott meg (lásd: EU Data Themes){% endtrans %}</p>
+  </div>
+</div>
+<div class="visible-md visible-lg">
+  <div class="row group-row">
+    {% for group in groups[0:2] %}
+    <div class="col-md-3 group-col">
+      {% snippet 'snippets/group_item.html', group=group, truncate=50, truncate_title=35 %}
+    </div>
+    {% endfor %}
+  </div>
+  <div class="row group-row">
+    {% for group in groups[2:5] %}
+    <div class="col-md-3 group-col">
+      {% snippet 'snippets/group_item.html', group=group, truncate=50, truncate_title=35 %}
+    </div>
+    {% endfor %}
+  </div>
+  <div class="row group-row">
+    {% for group in groups[5:9] %}
+    <div class="col-md-3 group-col">
+      {% snippet 'snippets/group_item.html', group=group, truncate=50, truncate_title=35 %}
+    </div>
+    {% endfor %}
+  </div>
+  <div class="row group-row">
+    {% for group in groups[9:13] %}
+    <div class="col-md-3 group-col">
+      {% snippet 'snippets/group_item.html', group=group, truncate=50, truncate_title=35 %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="visible-xs visible-sm">
+  <div class="row my-4">
+    {% for group in groups %}
+    <div class="col-xs-12 col-sm-6 mb-4">
+      {% snippet 'snippets/group_item.html', group=group, truncate=50, truncate_title=35 %}
+    </div>
+    {% endfor %}
+  </div>
+</div>

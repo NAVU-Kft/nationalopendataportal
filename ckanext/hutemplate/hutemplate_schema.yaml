@@ -1,0 +1,327 @@
+scheming_version: 2
+dataset_type: dataset
+about: A reimplementation of the default CKAN dataset schema
+about_url: http://github.com/ckan/ckanext-scheming
+before_validators: eurovoc_tags_validator group_required_validator
+
+dataset_fields:
+- field_name: dummy
+  label: Identification
+  preset: group_header
+
+- field_name: title
+  label: Title
+  preset: hutemplate_title
+  help_text: Az adatkészlet elnevezése
+  required: true
+  
+- field_name: name
+  label: URL
+  preset: dataset_slug
+  help_text: Az adatkészlet beazonosításához szükséges
+
+- field_name: notes
+  label: Description
+  form_snippet: markdown.html
+  help_text: Az adatkészlet rövid bemutatása
+  required: true
+
+- field_name: tag_string
+  label: Tags
+  preset: hutemplate_multiple_tag
+  vocabulary: eurovoc
+  form_placeholder: Válasszon címkét
+  help_text: Az adatkészletet jellemző fogalmak és címkék
+  required: true
+
+- field_name: _dummy_visibility
+  label: Visibility
+  preset: visibility
+  help_text: Privát adatkészletet csak az adminisztrátorok fognak látni
+
+#2. blokk
+- field_name: dummy
+  label: About the data
+  preset: group_header
+
+- field_name: groups__0__id
+  label: Group
+  preset: dataset_group_select
+  form_placeholder: Válasszon adatkategóriát
+  form_include_blank_choice: true
+  
+- field_name: dcat_type
+  label: Type
+  preset: hutemplate_select
+  choices_helper: vocabulary_choices
+  vocabulary: dataset-types
+  form_placeholder: Válasszon típust
+  help_text: Az adatkészlet típusa
+
+- field_name: language
+  label: Languages
+  preset: hutemplate_multiple_tag
+  vocabulary: languages
+  help_text: Az adatkészlet nyelve
+
+- field_name: access_rights
+  label: Access rights
+  preset: hutemplate_select
+  choices_helper: vocabulary_choices
+  vocabulary: access-rights
+  form_placeholder: Válasszon hozzáférési jogot
+  help_text: Az adatkészlet hozzáférhetőségét mutatja
+
+- field_name: spatial_uri
+  label: Spatial coverage
+  preset: hutemplate_multiple_tag
+  vocabulary: spatials
+  form_placeholder: Város, megye, országos
+  help_text: Az adatkészlet területi lefedettsége
+  required: true
+
+- field_name: spatial_resolution_in_meters
+  label: Spatial resolution
+  form_placeholder: Szám, méterben megadva
+  help_text: A legnagyobb elérhető felbontás
+
+- field_name: temporal_start
+  label: Temporal coverage start
+  preset: date
+  form_attrs: 
+    max: 9999-12-31
+
+- field_name: temporal_end
+  label: Temporal coverage end
+  preset: date
+  form_attrs: 
+    max: 9999-12-31
+
+- field_name: temporal_resolution
+  label: Temporal resolution 
+  preset: hutemplate_select
+  choices_helper: vocabulary_choices
+  form_placeholder: A vizsgált elemen belüli legkisebb beazonosítható időegység (pl. napi átlag hőmérséklet esetén 1 nap)
+  vocabulary: temporal
+
+#3.blokk
+- field_name: dummy
+  label: Contact data
+  preset: group_header
+
+- field_name: owner_org
+  label: Publisher Organization
+  preset: dataset_organization
+  form_include_blank_choice: true
+  form_placeholder: Válasszon közzétevőt
+  help_text: Az adatkészletet közzétevő szervezet
+
+- field_name: author
+  label: Author
+  help_text: Az adatkészlet készítője
+
+- field_name: author_email
+  label: Author Email
+  validators: email_validator ignore_missing
+  display_snippet: email.html
+  display_email_name_field: author
+  help_text: Az adatkészlet készítőjének e-mail címe
+
+- field_name: maintainer
+  label: Maintainer
+  help_text: A kezelésért felelős szervezet kapcsolattartójának neve
+
+- field_name: maintainer_email
+  label: Maintainer Email
+  validators: email_validator ignore_missing
+  display_snippet: email.html
+  display_email_name_field: maintainer
+  help_text: A kezelésért felelős szervezet kapcsolattartójának e-mail címe
+
+#4.blokk
+- field_name: dummy
+  label: Usage characteristics
+  preset: group_header
+
+- field_name: license_id
+  label: License
+  form_snippet: license.html
+  form_placeholder: Válasszon licencet
+  help_text: Az adatkészlethez tartozó Licencre vonatkozó tulajdonság
+
+- field_name: landing_page
+  label: Landing page
+  help_text: Az eredeti adatközlő weblapja, ahol a letöltések és további információk találhatók az adatkészlettel kapcsolatban
+
+- field_name: documentation
+  label: Documentation
+  form_placeholder: Az adatkészlet dokumentációjára mutató URL
+  preset: multiple_text
+
+# Adatelérések?
+
+#5. blokk
+- field_name: dummy
+  label: Origin of the data
+  preset: group_header
+
+- field_name: conforms_to
+  label: Conforms to
+  form_placeholder: Szabványok, jogszabályok, előírások hivatkozása
+  preset: hutemplate_markdown_multiple_text
+
+- field_name: alternate_identifier
+  label: Other identifiers
+  form_placeholder: Pl. DOI, EZID, W3ID, PURL
+  preset: multiple_text
+
+- field_name: provenance
+  label: Provenance
+  help_text: Az adatok történeti leírása
+
+- field_name: source
+  label: Sources
+  preset: multiple_text
+  form_placeholder: URL
+  help_text: Adatkészletek, melyek alapján ez az adatkészlet készült
+
+#- field_name: relations
+#  label: Qualified relations
+#  preset: multiple_text
+
+#- field_name: has_version
+#  label: Has version
+#  preset: multiple_text
+
+- field_name: referenced_by
+  label: Is referenced by
+  preset: multiple_text
+
+#- field_name: is_version_of
+#  label: Is version of
+
+#6. blokk
+- field_name: dummy
+  label: Technical characteristics
+  preset: group_header
+
+- field_name: version
+  label: Version
+  validators: ignore_missing unicode package_version_validator
+  form_placeholder: Sorszám
+  help_text: Az adatkészlet verziószáma
+
+- field_name: version_notes
+  label: Version notes
+  help_text: Ha van korábbi verzió, akkor az ahhoz képesti különbségek szöveges leírása 
+
+- field_name: frequency
+  label: Frequency
+  preset: hutemplate_select
+  choices_helper: vocabulary_choices
+  vocabulary: frequencies
+  form_placeholder: Válasszon gyakoriságot
+  help_text: Az adatkészlet frissítésének gyakorisága
+
+resource_fields:
+- field_name: dummy
+  label: Identification
+  preset: group_header
+
+- field_name: url
+  label: URL
+  preset: resource_url_upload
+
+- field_name: name
+  label: Title
+  form_placeholder: eg. January 2011 Gold Prices
+  help_text: Az adatelérés elnevezése
+
+- field_name: description
+  label: Description
+  form_snippet: markdown.html
+  form_placeholder: Some useful notes about the data
+  help_text: Az adatelérés rövid bemutatása
+
+#2. blokk
+- field_name: dummy
+  label: About the data
+  preset: group_header
+
+- field_name: format
+  label: File type
+  preset: resource_format_autocomplete
+  form_placeholder: Válasszon formátumot
+  help_text: Az adatelérés kiterjesztése
+
+- field_name: language
+  label: Languages
+  preset: hutemplate_multiple_tag
+  vocabulary: languages
+  help_text: Az adatelérésben használt nyelv
+
+- field_name: spatial_resolution_in_meters
+  label: Spatial resolution
+  form_placeholder: Szám, méterben megadva
+  help_text: A legnagyobb elérhető felbontás
+
+- field_name: temporal_resolution
+  label: Temporal resolution
+  preset: hutemplate_select
+  choices_helper: vocabulary_choices
+  vocabulary: temporal
+  form_placeholder: A vizsgált elemen belüli legkisebb beazonosítható időegység (pl. napi átlag hőmérséklet esetén 1 nap)
+
+- field_name: conforms_to
+  label: Conforms to
+  preset: hutemplate_markdown_multiple_text
+  validators: ignore_missing
+  form_placeholder: Szabványok, jogszabályok, előírások hivatkozása
+
+#3. blokk
+- field_name: dummy
+  label: Usage characteristics
+  preset: group_header
+
+- field_name: rights
+  label: Rights
+  help_text: Ezen adateléréssel kapcsolatos jogok leírására mutató URL
+  form_placeholder: URL
+
+#- field_name: documentation
+#  label: Documentation
+#  preset: multiple_text
+#  validators: ignore_missing
+
+#4. blokk
+- field_name: dummy
+  label: Technical characteristics
+  preset: group_header
+
+#- field_name: issued
+#  label: Release date
+#  preset: date
+
+#- field_name: modified
+#  label: Modification date
+#  preset: date
+
+#- field_name: availability
+#  label: Availability
+#  preset: hutemplate_select
+#  choices_helper: vocabulary_choices
+#  vocabulary: availability
+
+- field_name: access_service
+  label: Access service
+  preset: multiple_text
+  validators: ignore_missing
+
+#- field_name: download_url
+#  label: Download URL
+
+- field_name: status
+  label: Status
+  preset: hutemplate_select
+  choices_helper: vocabulary_choices
+  vocabulary: adms_statuses

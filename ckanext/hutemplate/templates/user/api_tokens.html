@@ -1,0 +1,9 @@
+{% ckan_extends %}
+
+{% import 'macros/form.html' as form %}
+
+{% block base_fields %}
+  <div class="form-group ">
+      {{ form.input('name', label=_('Name'), is_required=True, value=data.name, error=errors.name, attrs={'class': 'form-control', 'maxlength':'100'}) }}
+  </div>
+{% endblock base_fields %}

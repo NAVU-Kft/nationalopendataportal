@@ -1,0 +1,19 @@
+{% ckan_extends %}
+
+{% block toolbar %}
+{% endblock %}
+{% block footer %}
+{% endblock %}
+
+{% block primary %}
+  <article class="module">
+    <div class="error-page">
+      {% if name %}
+      <h1>{{ code }} {{ _(name) }}</h1>
+      {% endif %}
+      <p>
+        {{ _(content) }}
+      </p>
+    </div>
+  </article>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "page.html" %}
+{% import 'macros/page_content.html' as mc with context%}
+
+{% block breadcrumb_content %}
+<li class="active">{% link_for _('Imprint'), 'hutemplate.imprint' %}</li>
+{% endblock %}
+
+{% block primary %}
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
+    {% set page = h.get_page_for_type('IMPRINT') %}
+    {{ mc.page_content(page) }}
+  </div>
+</div>
+{% endblock %}
+{% block secondary %}{% endblock %} 

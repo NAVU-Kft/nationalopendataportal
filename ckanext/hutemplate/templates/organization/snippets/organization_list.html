@@ -1,0 +1,10 @@
+{% ckan_extends %}
+{% block organization_list %}
+<div class="row my-4">
+  {% for organization in organizations %}
+    <div class="col-md-4 col-xs-12 mb-4">
+      {% snippet 'snippets/organization_item.html', organization=organization, truncate=50, truncate_title=35 %}
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

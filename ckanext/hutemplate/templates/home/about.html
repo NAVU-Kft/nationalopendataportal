@@ -1,0 +1,29 @@
+{% extends "page.html" %}
+{% import 'macros/page_content.html' as mc with context%}
+
+{% block subtitle %}{{ _('About Open Data Portal') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('About Open Data Portal'), 'home.about' %}</li>
+{% endblock %}
+
+{% block primary %}
+  <article class="module" role="main">
+      {% set page = h.get_page_for_type('ABOUT') %}
+      {{ mc.page_content(page) }}
+  </article>
+
+  <div class="page-split-title">{{ _('Legal background') }}</div>
+
+  <article class="module" role="main">
+    <div class="col-xs-12">
+      <h3 class="green">{{ _('Legal framework') }}</h3>
+      {% set posts = h.get_recent_blog_posts_by_type(number=5, type="LEGAL_FRAMEWORK") %}
+      {% for post in posts %}
+        {% snippet 'hutemplate/snippets/blogpost_row.html', post=post %}
+      {% endfor %}
+    </div>
+  </article>
+{% endblock %}
+
+{% block secondary %}{% endblock %}

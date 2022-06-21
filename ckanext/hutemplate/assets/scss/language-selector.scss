@@ -1,0 +1,57 @@
+@import "variables";
+
+@media (min-width: $breakpointTablet) {
+  .site-footer {
+    .container {
+      .language-selector,
+      .language-selector:last-child {
+        padding: 0 0 0 30px;
+      }
+    }
+  }
+}
+
+@media (min-width: $breakpointWideScreen) {
+  .site-footer {
+    .container {
+      .language-selector,
+      .language-selector:last-child {
+        padding: 0 0 0 75px;
+      }
+    }
+  }
+}
+
+.site-footer .container .language-selector,
+.language-selector{
+    display: flex;
+    align-items: center;
+    a{
+        text-transform: uppercase;
+    }
+    .current{
+        display: inline-block;
+        background-color: $highlightLight;
+        border-radius: 50vw;
+        color: $primary300;
+        padding: 5px 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1), 0px 7px 10px rgba(114, 170, 160, 0.3);
+    }
+}
+.hu-navbar-collapse .language-selector{
+    padding: 13.5px 20px 32.5px;
+    background-color: $phoneNavBarColor;
+    a{
+        @include fontPoppins700($white);
+        font-size: 18px;
+        line-height: 14px;
+        & + a{
+            margin-left: 35px;
+        }
+    }
+    .current{
+        color: $primary300;
+        padding: 10px 15px;
+    }
+
+}

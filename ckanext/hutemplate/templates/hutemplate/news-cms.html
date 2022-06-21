@@ -1,0 +1,16 @@
+{% extends "page.html" %}
+{% import 'macros/page_content.html' as mc with context%}
+
+{% block breadcrumb_content %}
+<li class="active">{% link_for _('News'), 'hutemplate.news' %}</li>
+{% endblock %}
+
+{% block primary %}
+
+  <div class="col-xs-12">
+    {% set page = h.get_page_for_type('NEWS') %}
+    {{ mc.page_content(page) }}
+  </div>
+
+{% endblock %}
+{% block secondary %}{% endblock %} 

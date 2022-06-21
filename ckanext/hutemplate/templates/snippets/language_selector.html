@@ -1,0 +1,4 @@
+{% set current_lang = request.environ.CKAN_LANG %}
+{% for locale in h.get_available_locales() %}
+<a class="{% if locale.short_name == current_lang %}current{% endif %}" href="{% url_for h.current_url(), locale=locale.short_name %}">{{ locale.display_name or locale.english_name }}</a>
+{% endfor %}

@@ -1,0 +1,38 @@
+@import "variables";
+
+.toolbar-wrapper{
+  display: none;
+  @media (min-width: $breakpointTablet) {
+    display: flex;
+    height: 78px;
+    margin-bottom: 25px;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .toolbar {
+    @include fontLato;
+    padding: 0;
+    margin-bottom: 0;
+    .home span {
+      display: inline-block;
+    }
+    .breadcrumb {
+      a{
+        color: $secondary900;
+      }
+      .active a, a.active{
+        @include headline5($secondary900);
+      }
+      & > li + li:before {
+        @include feather-icon;
+        content: "\f131";
+        padding: 0 15px;
+        color: $secondary900;
+        font-size: 24px;
+        top: 3px;
+        position: relative;
+      }
+    }
+    
+  }
+}

@@ -1,0 +1,123 @@
+{% ckan_extends %}
+
+{% block secondary_content %}
+  {% block package_category %}
+  <div class="module module-narrow module-shallow context-info">
+    <h2 class="module-heading">{{ _('Groups') }}</h2>
+    {% if pkg_dict.groups %}
+    {% for group in pkg_dict.groups %}
+      <p>
+        {{ group.display_name }}
+      </p>
+      {% endfor %}
+    {% else %}
+      <p class="empty">{{ _('There are no groups associated with this dataset') }}</p>
+    {% endif %}
+  </div>
+  {% endblock %}
+  <div class="module module-narrow module-shallow context-info">
+    <h2 class="module-heading">{{ _('Publisher Organization') }}</h2>
+    {% set org = h.get_organization(pkg.organization.id) %}
+      <p>
+        {{ org.title or org.name }}
+          {% if org.state == 'deleted' %}
+            [{{ _('Deleted') }}]
+          {% endif %}
+      </p>
+  </div>
+  <div class="module module-narrow module-shallow context-info">
+    <h2 class="module-heading">{{ _('Formats') }}</h2>
+    {% for resource in h.dict_list_reduce(pkg.resources, 'format') %}
+    <p>
+      {{ resource }}
+    </p>
+    {% endfor %}
+  </div>
+  <div class="module module-narrow module-shallow context-info">
+    <h2 class="module-heading">{{ _('Tags') }}</h2>
+    <p>
+    {% for tag in pkg.tags %}
+    <a class="tag" href="{% url_for 'dataset.search', tags=tag.name %}">{{ h.truncate(tag.display_name, 22) }}</a>
+    {% endfor %}
+    </p>
+  </div>
+  {% if pkg.tracking_summary %}
+  <div class="module module-narrow module-shallow context-info">
+    <h2 class="module-heading">{{ _('Visits') }}</h2>
+    <p>
+      {{ pkg.tracking_summary.total }}
+      
+    </p>
+  </div>
+  <div class="module module-narrow module-shallow context-info">
+    <h2 class="module-heading">{{ _('Downloads') }}</h2>
+    <p>
+      {{ h.get_download_total(pkg) }}
+    </p>
+  </div>
+  <div class="module module-narrow module-shallow context-info">
+    <h2 class="module-heading">{{ _('API') }}</h2>
+    <p class="api-icons">
+      <a href="{% url_for 'dcat.read_dataset', _id=pkg.name, _format='rdf'%}" target="_blank"><i class="api-rdf"></i></a>
+      <a href="{% url_for 'dcat.read_dataset', _id=pkg.name, _format='jsonld'%}" target="_blank"><i class="api-json"></i></a>
+      <a href="{% url_for 'dcat.read_dataset', _id=pkg.name, _format='ttl'%}" target="_blank"><i class="api-ttl"></i></a>
+    </p>
+  </div>
+  {% endif %}
+  {{self.package_license()}}
+  
+{% endblock %}
+
+{% block page_header %}{% endblock %}
+
+{#
+{% extends "package/base.html" %}
+
+{% block subtitle %}{{ h.dataset_display_name(pkg) }} {{ g.template_title_delimiter }} {{ super() }}{% endblock %}
+
+{% block head_extras -%}
+  {{ super() }}
+  {% set description = h.markdown_extract(pkg.notes, extract_length=200)|forceescape %}
+  <meta property="og:title" content="{{ h.dataset_display_name(pkg) }} - {{ g.site_title }}">
+  <meta property="og:description" content="{{ description|forceescape|trim }}">
+{% endblock -%}
+
+{% block content_action %}
+  {% if not is_activity_archive %}
+    {% if h.check_access('package_update', {'id':pkg.id }) %}
+      {% link_for _('Manage'), named_route=pkg.type ~ '.edit', id=pkg.name, class_='btn btn-default', icon='wrench' %}
+    {% endif %}
+  {% endif %}
+{% endblock %}
+
+{% block content_primary_nav %}
+  {{ h.build_nav_icon(dataset_type ~ '.read', _('Dataset'), id=pkg.id if is_activity_archive else pkg.name, icon='sitemap') }}
+  {{ h.build_nav_icon(dataset_type ~ '.groups', _('Groups'), id=pkg.id if is_activity_archive else pkg.name, icon='users') }}
+  {{ h.build_nav_icon(dataset_type ~ '.activity', _('Activity Stream'), id=pkg.id if is_activity_archive else pkg.name, icon='clock-o') }}
+{% endblock %}
+
+{% block secondary_content %}
+
+  {% block secondary_help_content %}{% endblock %}
+
+  {% block package_info %}
+    {% snippet 'package/snippets/info.html', pkg=pkg %}
+  {% endblock %}
+
+  {% block package_organization %}
+    {% if pkg.organization %}
+      {% set org = h.get_organization(pkg.organization.id) %}
+      {% snippet "snippets/organization.html", organization=org, has_context_title=true %}
+    {% endif %}
+  {% endblock %}
+
+  {% block package_social %}
+    {% snippet "snippets/social.html" %}
+  {% endblock %}
+
+  {% block package_license %}
+    {% snippet "snippets/license.html", pkg_dict=pkg %}
+  {% endblock %}
+
+{% endblock %}
+#}

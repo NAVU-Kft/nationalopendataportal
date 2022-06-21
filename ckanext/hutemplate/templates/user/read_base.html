@@ -1,0 +1,76 @@
+{% ckan_extends %}
+
+{% set user = user_dict %}
+
+{% block content_action %}
+{% endblock %}
+
+{% block secondary %}
+  <aside class="secondary col-xs-12 col-sm-3 col-md-2">
+    {{self.secondary_content()}}
+  </aside>
+{% endblock %}
+
+{% block primary %}
+  <div class="primary col-xs-12 col-sm-9 col-md-10" role="main">
+    {{self.primary_content()}}
+  </div>
+{% endblock %}
+
+{% block content_primary_nav %}
+  {{ h.build_nav_icon('user.read', _('Datasets'), id=user.name) }}
+  {{ h.build_nav_icon('user.activity', _('Activity Stream'), id=user.name) }}
+  {% if h.check_access('api_token_list', {'user': user['name']}) %}
+    {{ h.build_nav_icon('user.api_tokens', _('API Tokens'), id=user.name) }}
+  {% endif %}
+{% endblock %}
+
+{% block user_image %}
+<div class="image">{{ h.user_image(user.id, size=None) }}</div>
+{% endblock %}
+
+{% block user_about %}
+{% if about_formatted %}
+  {{ about_formatted }}
+{% endif %}
+{% endblock %}
+
+{% block user_nums %}{% endblock %}
+{% block user_follow %}{% endblock %}
+
+{% block user_info %}
+<div class="info">
+  <dl>
+    {% if user.name.startswith('http://') or user.name.startswith('https://') %}
+      <dt>{{ _('Open ID') }}</dt>
+      <dd>{{ user.name|urlize(25) }}{# Be great if this just showed the domain #}</dd>
+    {% else %}
+      <dt>{{ _('Username') }}</dt>
+      <dd>{{ user.name }}</dd>
+    {% endif %}
+  </dl>
+  {% if is_myself %}
+    <dl>
+      <dt>{{ _('Email') }} <span class="label label-default" title="{{ _('This means only you can see this') }}">{{ _('Private') }}</span></dt>
+      <dd>{{ user.email }}</dd>
+    </dl>
+  {% endif %}
+  <dl>
+    <dt>{{ _('Member Since') }}</dt>
+    <dd>{{ h.render_datetime(user.created, '%Y.%m.%d.') }}</dd>
+  </dl>
+  <dl>
+    <dt>{{ _('State') }}</dt>
+    <dd>{{ _(user.state) }}</dd>
+  </dl>
+  {% if is_myself %}
+    <dl>
+      <dt class="key">{{ _('API Key') }} <span class="label label-default" title="{{ _('This means only you can see this') }}">{{ _('Private') }}</span></dt>
+      <dd class="value"><code>{{ user.apikey }}</code></dd>
+    </dl>
+  {% endif %}
+</div>
+{% if h.check_access('user_update', user) %}
+  {% link_for _('Manage'), named_route='user.edit', id=user.name, class_='btn btn-sm btn-primary btn-outline btn-fullwidth', icon='wrench' %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% ckan_extends %}
+
+{% set url=h.url_for(controller='group', action='read', id=group.name) %}
+{% block group_item %}
+  <div class="card group-item-card" onclick="window.location='{{ url }}'">
+    <div class="group-item-col">
+      <i class="group-icon icon-{{group.name}}"></i>
+    </div>
+    <div class="group-item-col ml-3">
+      <div class="mb-1">
+        {% set truncate=truncate or 0 %}
+        {% set truncate_title = truncate_title or 0 %}
+        {% set title = group.title or group.name %}
+        <a href="{{ url }}">{{ group.title or group.name }}</a>
+      </div>
+      {% if group.package_count is defined %}
+      <p>{{ ungettext('{num} Dataset', '{num} Datasets', group.package_count).format(num=group.package_count) }}</p>
+      {% endif %}
+    </div>
+    {% if group.user_member %}
+    <button name="group_remove.{{ group.id }}" type="submit" class="btn btn-danger btn-sm  media-edit" title="{{ _('Remove dataset from this group') }}">
+      <i class="fa fa-times"></i>
+    </button>
+    {% endif %}
+  </div>
+{% endblock %}

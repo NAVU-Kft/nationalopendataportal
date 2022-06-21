@@ -1,0 +1,29 @@
+{% extends "page.html" %}
+{% import 'macros/page_content.html' as mc with context%}
+
+{% block breadcrumb_content %}
+<li class="active">{% link_for _('Contact'), 'hutemplate.contact' %}</li>
+{% endblock %}
+
+{% block primary %}
+<div class="row">
+  <div class="col-md-offset-1 col-md-5 col-xs-12">
+    <div class="col-xs-12">
+      <iframe style="width: 100%; border:0; height: 310px; margin-top: 25px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2694.174926930473!2d19.061820215835017!3d47.525457301572736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741dbf23811d915%3A0x3650ab0f58352f5f!2zQnVkYXBlc3QsIFbDoWNpIMO6dCAzNSwgMTEzNA!5e0!3m2!1shu!2shu!4v1639482786004!5m2!1shu!2shu" height="310" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div class="contact-data col-xs-12">
+      {% set company_settings = h.get_company_settings() %}
+      <h2>{{ company_settings.company_name }}</h2>
+      <p>{{ company_settings.company_address }}</p>
+      <p>{{ company_settings.company_phone }}</p>
+      <p>{{ company_settings.company_email }}</p>
+    </div>
+  </div>
+  <div class="col-md-5 col-xs-12">
+    {% set page = h.get_page_for_type('CONTACT') %}
+    {{ mc.page_content(page) }}
+  </div>
+</div>
+{% endblock %}
+
+{% block secondary %}{% endblock %} 

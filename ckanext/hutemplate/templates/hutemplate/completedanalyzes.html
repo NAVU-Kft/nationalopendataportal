@@ -1,0 +1,36 @@
+{% extends "page.html" %}
+{% import 'macros/page_content.html' as mc with context%}
+
+{% block breadcrumb_content %}
+<li class="active">{% link_for _('Completed Analyzes'), 'hutemplate.completedanalyzes' %}</li>
+{% endblock %}
+
+{% block primary %}
+<article class="module" role="main">
+  <h3 class="green">{{ _('Analyzes made in NAVÜ') }}</h3>
+  {% set posts = h.get_recent_blog_posts_by_type(number=3, type="ANALYZES_NAVU") %}
+  {% for post in posts %}
+    {% snippet 'hutemplate/snippets/analyzes_row.html', post=post %}
+  {% endfor %}
+</article>
+
+{#
+<article class="module" role="main">
+  <h3 class="green">{{ _('Analysis of economic and social impacts') }}</h3>
+  {% set posts = h.get_recent_blog_posts_by_type(number=3, type="ANALYZES_ECON") %}
+  {% for post in posts %}
+    {% snippet 'hutemplate/snippets/blogpost_row.html', post=post %}
+  {% endfor %}
+</article>
+
+<article class="module" role="main">
+  <h3 class="green">{{ _('Statistics') }}</h3>
+  {% set posts = h.get_recent_blog_posts_by_type(number=3, type="ANALYZES_STAT") %}
+  {% for post in posts %}
+    {% snippet 'hutemplate/snippets/blogpost_row.html', post=post %}
+  {% endfor %}
+</article>
+#}
+{% endblock %}
+
+{% block secondary %}{% endblock %}

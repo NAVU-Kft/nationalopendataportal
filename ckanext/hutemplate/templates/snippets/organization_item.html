@@ -1,0 +1,11 @@
+{% set url=h.url_for(organization.type ~ '.read', id=organization.name) %}
+{% set image_url = organization.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') %}
+<div class="card organization-item-card  py-5 pl-4"  onclick="window.location='{{ url }}'">
+  <div class="organization-item-col">
+    <div alt="{{ organization.name }}" class="organization-image" style="background-image: url({{image_url}})"></div>
+    <div class="mb-1">
+      <a href="{{ url }}">{{ organization.title or organization.name }}</a>
+    </div>
+    <p>{{ ungettext('{num} Dataset', '{num} Datasets', organization.package_count).format(num=organization.package_count) }}</p>
+  </div>
+</div>

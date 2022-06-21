@@ -1,0 +1,40 @@
+{% ckan_extends %}
+
+{% block primary_content %}
+<div class="background-left"></div>
+<div class="background-right"></div>
+<div class="main">
+  <div class="container">
+    <div class="toolbar"></div>
+    <div class="row">
+      <div class="col-md-6 hidden-xs mt-5">
+        {% block search %} 
+          {% snippet 'home/snippets/search.html' %}
+        {% endblock %}
+      </div>
+    </div>
+    {% snippet 'home/snippets/promoted.html' %}
+    {% snippet 'home/snippets/featured_group.html' %}
+    <p class="mt-10 landing-page-subtitle">{{_('Page statistics')}}</p>
+    {% snippet 'home/snippets/stats.html' %}
+    <p class="mt-10 landing-page-subtitle">{{_('Organizations')}}</p>
+    {% snippet 'home/snippets/featured_organization.html' %}
+    {#
+    <p class="mt-10 landing-page-subtitle">{{_('News')}}</p>
+    {% snippet 'home/snippets/news_list.html' %}
+    #}
+    <div class="row mt-10">
+      <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+        <p class="landing-page-subtitle subtitle-centered">{{_('Useful concepts')}}</p>
+        {% snippet 'snippets/info.html', faquadata=[
+        ['Adat', 'Az információ hordozója, a tények, fogalmak vagy utasítások formalizált ábrázolása, amely az emberek vagy automatikus eszközök számára közlésre, megjelenítésre vagy feldolgozásra alkalmas. (Ibtv. 1.§ (1) bek. 1. pont)'],
+        ['Adat-ökoszisztéma', 'Az állami és önkormányzati szervekből, kutató-intézményekből, a vállalkozásokból, más nem kormányzati szervezetekből (NGO) és a lakosságból, továbbá az említettek adataiból, szakembereikből, együttműködéseikből, támogatásokból, jogi, szabványosítási, oktatási, műszaki infrastruktúráiból álló olyan rendszer, melyben a különböző szereplők egyszerre megrendelői és szolgáltatói egymásnak; ilyen módon kölcsönösen függenek egymástól, amely miatt csak együtt változhatnak, illetve fejlődhetnek. (Fehér könyv a nemzeti adatpolitikáról, Nemzeti Hírközlési és Informatikai Tanács, 2016)'],
+        ['DCAT/DCAT AP', 'A DCAT (Data Catalog Vocabulary) a W3C (World Wide Web Consortium) szervezet adatkatalógus-ajánlása, a DCAT AP ( Data Catalog Vocabulary Application Profile) egy alkalmazási profil, amelyet az európai adatportálok használnak.'],
+        ['Információ', 'Nem más, mint kontextusba helyezett adat (Fehér könyv a nemzeti adatpolitikáról, Nemzeti Hírközlési és Informatikai Tanács, 2016)'],
+        ['Újrahasznosítás céljából történő rendelkezésre bocsátás', 'A közadathoz vagy kulturális közadathoz az igénylő részére biztosított olyan hozzáférés, amely lehetővé teszi az igényelt adat újrahasznosítását az igénylő számára, ideértve különösen az adat adathordozón vagy elektronikus úton történő egyszeri vagy rendszeres átadását, az adatot tartalmazó adatbázishoz történő közvetlen hozzáférés biztosítását, továbbá bármely más jogszabályba nem ütköző hozzáférési módot, amelyben a közfeladatot ellátó szerv és az igénylő az újrahasznosítási megállapodásban megállapodik (a közadatok újrahasznosításáról szóló 2012. évi LXIII. törvény (Közadat tv.) 4.§ 9. pont)']
+        ]  %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

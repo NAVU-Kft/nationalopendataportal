@@ -1,0 +1,59 @@
+hutemplate-js:
+  filter: rjsmin
+  output: ckanext-hutemplate/%(version)s-hutemplate.js
+  contents:
+    - js/facet_list.js
+    - js/facet_input.js
+    - js/resizing_select.js
+    - js/faq_search.js
+    - js/facet_search_buttons.js
+    - js/hutemplate-datepicker.js
+  extra:
+    preload:
+      - base/main
+
+hutemplate-editor-js:
+  filter: rjsmin
+  output: ckanext-hutemplate/%(version)s-editor-hutemplate.js
+  contents:
+    - js/hutemplate-slug-preview.js
+    - js/hutemplate-autocomplete.js
+  extra:
+    preload:
+      - base/main
+
+hutemplate-dropdown-reposition:
+  filter: rjsmin
+  output: ckanext-hutemplate/%(version)s-hutemplate-dropdown.js
+  contents:
+    - js/dropdown_reposition.js
+    - js/jquery-ui.min.js
+  extra:
+    preload:
+      - base/main
+
+hutemplate-css:
+  filter: cssrewrite
+  output: ckanext-hutemplate/%(version)s-hutemplate.css
+  contents:
+    - css/fonts.css
+    - css/feather-icons.css
+    - css/api-icons.css
+    - css/hutemplate.css
+
+cookieconsent-js:
+  filter: rjsmin
+  output: ckanext-hutemplate/%(version)s-cookieconsent.js
+  contents:
+    - cookieconsent/cookieconsent.js
+    - cookieconsent/settings.js
+  extra:
+    preload:
+      - base/main
+
+cookieconsent-css:
+  filter: cssrewrite
+  output: ckanext-hutemplate/%(version)s-cookieconsent.css
+  contents:
+    - cookieconsent/cookieconsent.css
+    - cookieconsent/custom.css

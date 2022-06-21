@@ -1,0 +1,29 @@
+@import "variables";
+
+.pagination-wrapper{
+    border: none;
+    .pagination{
+        & > li{
+            & > a, &.active > a{
+                @include fontPoppins500($primary300);
+                background-color: $white;
+                font-size: 14px;
+                line-height: 30px;
+                border: 1px solid $primary300;
+                border-radius: 50vw;
+                width: 32px;
+                height: 32px;
+                padding: 0;
+                margin-left: 15px;
+            }
+            &:first-child > a{
+                margin-left: 0px;
+            }
+            &.active > a{
+                color: $white;
+                background-color: $primary300;
+            }
+        }
+    }
+
+}   

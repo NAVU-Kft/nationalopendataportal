@@ -1,0 +1,28 @@
+{% set faquadata = faquadata if faquadata else [] %}
+{% set hasBorder = hasBorder if hasBorder else false %}
+
+<div class="panel-group info-list" id="accordion" role="tablist" aria-multiselectable="true">
+  {% for faq in faquadata %}
+  {% set question=faq[0] %}
+  {% set answer=faq[1] %}
+  <div class="panel panel-default {% if hasBorder and loop.index < faquadata|length %}underlined{% endif %}">
+    <div class="panel-heading" role="tab" id="heading{{loop.index}}">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{loop.index}}" aria-expanded="false" aria-controls="collapse{{loop.index}}">
+          <i class="feather-icon icon-chevron-down mr-3"></i>
+          <i class="feather-icon icon-chevron-up mr-3"></i>
+          <span>{% trans %} {{ question }} {% endtrans %}</span>
+        </a>
+      </h4>
+    </div>
+    <div id="collapse{{loop.index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{loop.index}}">
+      <div class="panel-body">
+        <div>
+          {{ answer|safe }}
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,24 @@
+{% ckan_extends %}
+
+{% block breadcrumb_content %}
+  {% if pkg %}
+    {% set dataset = h.dataset_display_name(pkg) %}
+      <li>{% link_for _(dataset_type.title()), named_route=dataset_type ~ '.search' %}</li>
+    <li class="active">{% link_for dataset|truncate(30), named_route=pkg.type ~ '.read', id=pkg.id if is_activity_archive else pkg.name %}</li>
+  {% else %}
+    <li>{% link_for _(dataset_type.title()), named_route=dataset_type ~ '.search' %}</li>
+    <li class="active"><a href="">{{ _('Create Dataset') }}</a></li>
+  {% endif %}
+{% endblock %}
+
+{% block secondary %}
+  <aside class="secondary col-sm-2 col-xs-12">
+    {{self.secondary_content()}}
+  </aside>
+{% endblock %}
+
+{% block primary %}
+  <div class="primary col-sm-10 col-xs-12" role="main">
+    {{self.primary_content()}}
+  </div>
+{% endblock %}

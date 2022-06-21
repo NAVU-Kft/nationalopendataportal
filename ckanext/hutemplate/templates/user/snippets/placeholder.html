@@ -1,0 +1,12 @@
+{% set sizeStr = size %}
+{% if size %}
+<span class="user-image" style="width: {{size}}px; padding-top: 0px; height: {{size}}px; line-height: {{size}}px; font-size: 10px">    
+{% else %}
+<span class="user-image">
+{% endif %}
+    <span class="user-text">
+        <span class="inner">
+            {{ h.monogram(user_name) }}
+        </span>
+    </span>    
+</span>

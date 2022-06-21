@@ -1,0 +1,19 @@
+@import "variables";
+@import "cms-content";
+
+.datarequest {
+  @media (min-width: 768px) {
+    margin-top: 85px;
+    margin-bottom: 85px;
+  }
+}
+.card {
+  @include card;
+  padding: 25px;
+}
+.col-md-card{
+  @media (min-width: 768px) {
+    @include card;
+    padding: 25px;
+  }
+}

@@ -1,0 +1,48 @@
+@import "variables";
+
+.activity {
+  background-position-x: 19px;
+  .item {
+    .actor {
+      .user-image {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 15px;
+        padding-top: 0;
+        left: 56px;
+        @media (min-width: $breakpointTablet) {
+          left: 75px;
+        }
+      }
+    }
+
+    p {
+      margin-left: 111px;
+      @media (min-width: $breakpointTablet) {
+        margin-left: 125px;
+      }
+      a {
+        color: $primary300;
+      }
+      @include paragraph;
+      .date {
+        font-size: 13px;
+        color: $secondary300;
+        white-space: normal;
+        @media (min-width: $breakpointTablet) {
+            white-space: nowrap;
+        }
+      }
+    }
+
+    .icon {
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+    }
+
+    a {
+    }
+  }
+}

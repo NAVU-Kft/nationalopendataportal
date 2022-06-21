@@ -1,0 +1,19 @@
+{% set stats = h.get_site_statistics() %}
+
+<div class="stat-row">
+  <div class="stat-img">
+    <img src="{{ h.url_for_static('img/stat_diagram.svg') }}">
+  </div>
+  <div class="stat-nums">
+    <div class="stat-num">
+      <p class="stat-value"><span>{{ h.localised_number(stats.organization_count) }}</span></p>
+      <p class="stat-title">{{ _('Organization') }}</p>
+    </div>
+    <div class="stat-num">
+      <p class="stat-value"><span>{{ h.localised_number(stats.dataset_count) }}</span></p>
+      <p class="stat-title">{{ _('Dataset') }}</p>
+    </div>
+</div>
+</div>
+
+    

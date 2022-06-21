@@ -1,0 +1,30 @@
+{% ckan_extends %} 
+
+{% block page_primary_action %}
+  {% if h.check_access('ckanext_pages_update', {}) %}
+    {% if h.ckan_version().split('.')[1] | int >= 9 %}
+      {% link_for _('Add page'), named_route='pages.new', page='', class_='btn btn-primary btn-sm', icon=h.pages_get_plus_icon() %}
+    {% else %}
+      {% link_for _('Add page'), controller='ckanext.pages.controller:PagesController', action='pages_edit', page='', class_='btn btn-primary btn-sm', icon=h.pages_get_plus_icon() %}
+    {% endif %}
+  {% endif %}
+{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('Pages'), named_route='pages.index' %}</li>
+{% endblock %}
+
+{% block main_content %}
+   {{ self.toolbar() }}
+   <div class="wrapper no-nav">
+    <article class="module">
+      <div class="module-content pages">
+        <div class="page_primary_action">
+          {{ self.page_primary_action() }}
+        </div>
+        {% snippet 'ckanext_pages/snippets/pages_list.html', pages=c.page.items %}
+        {{ c.page.pager() }}
+      </div>
+    </article>
+   </div>
+{% endblock %}

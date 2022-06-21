@@ -1,0 +1,82 @@
+@import "variables";
+
+.btn-default,
+.btn {
+  border-radius: 50vh;
+  background-color: $primary300;
+  border-color: $primary300;
+  color: $white;
+
+  svg {
+    vertical-align: middle;
+  }
+  &.btn-link{
+    color: $white;
+    &:hover{
+      text-decoration: none;
+      background-color: $primary300;
+    }
+  }
+}
+.visible-xs-flex {
+  @media (max-width: 767px) {
+    display: flex;
+  }
+  @media (min-width: 768px) {
+    display: none !important;
+  }
+}
+
+.pill{
+  background-color: $tagGreyDarker;
+  @include fontPoppins600($textColor);
+  font-size: 14px;
+  line-height: 21px;
+  padding: 5px 15px;
+  a.remove{
+    font-size: 14px;
+    padding-left: 15px;
+    color: $textColor;
+  }
+}
+
+$spacings: (0, 0.25rem, 0.5rem, 1rem, 1.5rem, 2rem, 3rem, 4rem, 6rem, 8rem, 10rem);
+
+$prefixes: (
+  p: padding,
+  px: (
+    padding-left,
+    padding-right,
+  ),
+  py: (
+    padding-top,
+    padding-bottom,
+  ),
+  pt: padding-top,
+  pr: padding-right,
+  pb: padding-bottom,
+  pl: padding-left,
+  m: margin,
+  mx: (
+    margin-left,
+    margin-right,
+  ),
+  my: (
+    margin-top,
+    margin-bottom,
+  ),
+  mt: margin-top,
+  mr: margin-right,
+  mb: margin-bottom,
+  ml: margin-left,
+) !default;
+
+@each $attr-short, $attr-list in $prefixes {
+  @each $space in $spacings {
+    .#{$attr-short}-#{ index(($spacings), $space)-1 } {
+      @each $attr in $attr-list {
+        #{$attr}: #{$space};
+      }
+    }
+  }
+}

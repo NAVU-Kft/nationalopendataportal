@@ -1,0 +1,108 @@
+msgid "Publisher Organization"
+msgstr ""
+
+msgid "Spatial coverage"
+msgstr ""
+
+msgid "Temporal coverage start"
+msgstr ""
+
+msgid "Temporal coverage end"
+msgstr ""
+
+msgid "Access rights"
+msgstr ""
+
+msgid "Conforms to"
+msgstr ""
+
+msgid "Documentation"
+msgstr ""
+
+msgid "Frequency"
+msgstr ""
+
+msgid "Has version"
+msgstr ""
+
+msgid "Is referenced by"
+msgstr ""
+
+msgid "Is version of"
+msgstr ""
+
+msgid "Languages"
+msgstr ""
+
+msgid "Other identifiers"
+msgstr ""
+
+msgid "Provenance"
+msgstr ""
+
+msgid "Qualified relations"
+msgstr ""
+
+msgid "Sources"
+msgstr ""
+
+msgid "Spatial resolution"
+msgstr ""
+
+msgid "Temporal resolution"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Version"
+msgstr ""
+
+msgid "Version notes"
+msgstr ""
+
+msgid "Availability"
+msgstr ""
+
+msgid "Access service"
+msgstr ""
+
+msgid "Download URL"
+msgstr ""
+
+msgid "Release date"
+msgstr ""
+
+msgid "Rights"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Modification date"
+msgstr ""
+
+msgid "File type"
+msgstr ""
+
+msgid "Landing page"
+msgstr ""
+
+msgid "Identification"
+msgstr ""
+
+msgid "About the data"
+msgstr ""
+
+msgid "Contact data"
+msgstr ""
+
+msgid "Usage characteristics"
+msgstr ""
+
+msgid "Origin of the data"
+msgstr ""
+
+msgid "Technical characteristics"
+msgstr ""
+

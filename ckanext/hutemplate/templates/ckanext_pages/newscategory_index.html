@@ -1,0 +1,33 @@
+{% extends 'ckanext_pages/edit_base.html' %} 
+
+{% block page_primary_action %}
+  {% if h.check_access('ckanext_pages_update', {}) %}
+    {% if h.ckan_version().split('.')[1] | int >= 9 %}
+      {% link_for _('Add Article'), named_route='pages.blog_new', page='', class_='btn btn-primary btn-sm', icon=h.pages_get_plus_icon() %}
+    {% else %}
+      {% link_for _('Add Article'), controller='ckanext.pages.controller:PagesController', action='blog_edit', page='', class_='btn btn-primary btn-sm', icon=h.pages_get_plus_icon() %}
+    {% endif %}
+  {% endif %}
+{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('News categories'), named_route='hutemplate.newscategory_index' %}</li>
+{% endblock %}
+
+{% block main_content %}
+  {{ self.toolbar() }}
+   <div class="wrapper no-nav">
+    <article class="module">
+      <div class="module-content pages">
+        {% for blog_type in h.blog_types() %}
+          {% set url = h.url_for('hutemplate.newscategory_show', category_name_or_id=blog_type['label']) %}
+          <div class="page-list-item" onclick="window.location = '{{url}}'">
+            <h3 class="dataset-heading">
+              <a href="{{ url }}" >{{blog_type['label']}}</a>
+            </h3>
+          </div>
+        {% endfor%}
+      </div>
+    </article>
+   </div>
+{% endblock %}

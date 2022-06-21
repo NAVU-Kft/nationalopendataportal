@@ -1,0 +1,26 @@
+{% extends 'ckanext_pages/blog_list.html' %}
+
+{% block page_primary_action %}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li>{% link_for _('News'), 'hutemplate.news' %}</li>
+  <li class="active">{% link_for _('All News'), named_route='hutemplate.news_all' %}</li>
+{% endblock %}
+
+{% block main_content %}
+  {{ self.toolbar() }}
+   <div class="wrapper no-nav">
+    <article class="module">
+      <div class="module-content pages">
+        <div class="col-xs-12">
+          <div class="row">
+            {% for post in c.page.items %}
+            {% snippet 'hutemplate/snippets/news_medium.html', post=post, cols='col-xs-12 col-sm-4' %}
+            {% endfor %}
+          </div>
+        </div>
+        {{ c.page.pager() }}
+      </div>
+    </article>
+   </div>
+{% endblock %}

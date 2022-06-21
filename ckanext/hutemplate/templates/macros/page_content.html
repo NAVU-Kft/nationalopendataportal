@@ -1,0 +1,17 @@
+{% macro page_content(page) %} 
+    {% if page.content %}
+        <div class="ckanext-pages-content">
+        {% set editor = h.get_wysiwyg_editor() %}
+        <!-- editor set to "{{ editor }}"-->
+        {% if editor %}
+            <div>{{page.content|safe}}</div>
+        {% else %} 
+            {{ h.render_content(page.content) }} 
+        {% endif %}
+        </div>
+    {% else %}
+    <div class="col-xs-12">
+        <p class="empty">{{ _('This page currently has no content') }}</p>
+    </div>
+    {% endif %} 
+{% endmacro %}

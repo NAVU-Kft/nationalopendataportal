@@ -1,0 +1,17 @@
+{% set post=post %}
+
+{% if h.ckan_version().split('.')[1] | int >= 9 %}
+{% set url=h.url_for('hutemplate.news_show', page= post.name) %}
+{% else %}
+{% set url=h.url_for(controller='ckanext.pages.controller:PagesController', action='blog_show', page='/' + post.name) %}
+{% endif %}
+<div class="news-item small col-xs-12" onclick="window.location = '{{url}}'">
+    <div class="row">
+        <h2 class="col-xs-12">
+            <a href="{{ url }}">{{ post.title or post.name }}</a>
+        </h2>
+        <div class="col-xs-12 news-preview">
+            {{ h.markdown_extract(post.content) }}
+        </div>
+    </div>
+</div>

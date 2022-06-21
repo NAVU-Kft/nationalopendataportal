@@ -1,0 +1,19 @@
+{% ckan_extends %}
+
+{% block content_action %}
+{% endblock %}
+
+{% block content_primary_nav %}
+  {% if h.check_access('package_update', {'id':pkg.id }) %}
+    {{ h.build_nav_icon(pkg.type ~ '.edit', _('Edit metadata'), id=pkg.name, icon='pencil-square-o') }}
+    {{ h.build_nav_icon(pkg.type ~ '.resources', _('Resources'), id=pkg.name, icon='bars') }}
+  {% endif %}
+  {% if h.check_config_permission('allow_dataset_collaborators') and h.check_access('package_collaborator_create', {'id': pkg_dict.id}) %}
+    {{ h.build_nav_icon(pkg.type ~ '.collaborators_read', _('Collaborators'), id=pkg.name, icon='users')}}
+  {% endif %}
+  {{ h.build_nav_icon(dataset_type ~ '.groups', _('Groups'), id=pkg.id if is_activity_archive else pkg.name, icon='users') }}
+{% endblock %}
+
+{% block page_header %}
+  {{super.super()}}
+{% endblock %}

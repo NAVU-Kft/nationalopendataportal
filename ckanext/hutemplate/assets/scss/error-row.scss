@@ -1,0 +1,10 @@
+@import "variables";
+.alert-error{
+    @include fontLato;
+    color: $dangerDefault;
+    background-color: $dangerLight;
+    border: 1px solid $dangerDefault;
+    p{
+        color: $dangerDefault;
+    }
+}

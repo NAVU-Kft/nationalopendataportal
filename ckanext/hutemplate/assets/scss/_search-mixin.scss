@@ -1,0 +1,64 @@
+@mixin _searchInputInput {
+  @include paragraph;
+  border: 2px solid $primary300;
+  border-right: none;
+  border-radius: 10px;
+  height: 40px;
+  padding-top: 9px;
+  &:focus{
+    box-shadow: none;
+  }
+}
+
+@mixin _searchInputGrpButton {
+  border: 2px solid $primary300;
+  border-radius: 0 10px 10px 0;
+  margin-left: -2px;
+    border-left: none;
+    height: 40px;
+    font-size: 20px;
+    box-shadow: none;
+    background-color: $white;
+    border-color: $primary300;
+    i.feather-icon {
+      font-size: 24px;
+      color: $secondary900;
+      margin-top: 2px;
+      margin-right: 8px;
+    }
+
+}
+
+@mixin searchInputGroup {
+  margin-bottom: 0;
+  z-index: 10;
+  input {
+    @include _searchInputInput;
+    padding-bottom: 7px;
+  }
+  .input-group-btn button {
+    @include _searchInputGrpButton;
+    padding-top: 5px;
+    padding-bottom: 10px;
+  }
+  .input-group-btn:last-child > .btn {
+    margin-left: -2px;
+  }
+}
+
+@mixin moduleInputGroup {
+  margin-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  input {
+    @include _searchInputInput;
+  }
+  .input-group-btn button {
+    @include _searchInputGrpButton;
+    padding-top: 4px;
+    padding-bottom: 5px;
+  }
+  .input-group-btn:last-child > .btn {
+    margin-left: -2px;
+  }
+}

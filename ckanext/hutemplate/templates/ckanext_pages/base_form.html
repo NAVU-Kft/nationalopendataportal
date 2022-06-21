@@ -1,0 +1,53 @@
+{% ckan_extends %}
+
+{% asset 'hutemplate/ckeditor-config-js' %}
+
+{% block form_basic_fields %}
+    {{ form.input('title', id='field-title', label=_('Title'), placeholder=title_placeholder, value=data.title, error=errors.title, classes=['control-full', 'control-large'], attrs={'data-module': 'slug-preview-target', 'class': 'form-control'}) }}
+
+    {% set domain = slug_domain|replace("http://", "")|replace("https://", "") %}
+    {% set attrs = {'data-module': 'slug-preview-slug', 'data-module-prefix': domain~'/', 'data-module-placeholder': '<page>'} %}
+    {{ form.prepend('name', id='field-name', label=_('URL'), prepend=slug_prefix, placeholder=_(url_placeholder), value=data.name, error=errors.name, attrs=attrs) }}
+    
+    {% if type=="blog" %}
+    {% set date = data.publish_date %}
+    {% if data is none or date|length == 0 %}
+        {% set date = h.now() %}
+    {% endif %}
+    {{ form.input('publish_date', id='field-publish_date', label=_('Publish Date'), placeholder=_('2021-04-23'), value=date , error=errors.publish_date, classes=[], attrs={'data-module': 'hutemplate-datepicker', 'data-date-format': 'yyyy-mm-dd', 'class': 'form-control'}) }}
+    {% endif %}
+
+  {% endblock %}
+
+{% block extra_pages_form %}
+    {% if type=="blog" %}
+    {% set blog_type = data.blog_type %}
+    {% if data is none or blog_type|length == 0 %}
+        {% set blog_type = request.params.category %}
+    {% endif %}
+    {{ form.select('blog_type', id = 'blog_type', label = 'Blog Type', options=h.mapToSelect(h.blog_types()), selected=blog_type) }}
+    {{ form.hidden('page_subtype', '') }}
+    {% else %}
+    {{ form.select('page_subtype', id = 'page_subtype', label = 'Page Type', options=h.mapToSelect(h.page_types(), _('CMS Page')), selected=data.page_subtype) }}
+    {{ form.hidden('blog_type', '') }}
+    {% endif %}
+{% endblock extra_pages_form %}
+
+{% block form_visibility_fields %}
+    <div class="control-group form-group">
+        <label for="field-private" class="control-label">{{ _('Visibility') }}</label>
+        <div class="controls">
+            <select id="field-private" class="form-control" name="private">
+                {% for option in [(true, _('Private')), (false, _('Public'))] %}
+                <option value="{{ option[0] }}" {% if option[0] == data.private %}selected="selected"{% endif %}>{{ option[1] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ h.url_for_static('js/ckeditor_config.js') }}"></script>
+{% asset 'hutemplate/hutemplate-js' %}
+{% endblock %}

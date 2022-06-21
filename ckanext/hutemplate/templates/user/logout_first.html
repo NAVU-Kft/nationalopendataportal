@@ -1,0 +1,17 @@
+{% import 'macros/form.html' as form %}
+{% ckan_extends %}
+
+{% set logout_url = h.url_for('user.logout') %}
+
+{% block form %}
+  <div class="log-out-first">
+    {{ _("You're already logged in as {user}.").format(user=g.user) }}
+    {{ _("You need to log out before you can log in with another account.") }}
+  </div>
+  <div class="form-actions">
+    <a class="btn btn-primary" href="{{ logout_url }}">{{ _('Log out now') }}<i class="feather-icon icon-arrow-right"></i></a>
+  </div>
+{% endblock %}
+
+{% block secondary_content %}
+{% endblock %}

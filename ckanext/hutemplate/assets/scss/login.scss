@@ -1,0 +1,61 @@
+@import 'variables';
+
+body.login-page{
+    justify-content: center;
+    .login-card{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: $white;
+        padding: 100px 200px;
+        width: 100%;
+        .login-logo{
+            img, .header-text{
+                float: left;
+            }
+            margin-bottom: 50px;
+        }
+        h1.page-heading{
+            @include fontPoppins700($secondary900);
+            font-size: 24px;
+            line-height: 27px;
+            letter-spacing: 0.02em;
+            margin-bottom: 25px;
+        }
+        .login-form{
+            width: 372px;
+            .form-actions{
+                text-align: center;
+            }
+        }
+        .log-out-first{
+            @include paragraph($secondary900);
+            margin-bottom: 50px;
+        }
+    }
+}
+
+@media (min-width: $breakpointTablet) {
+    body.login-page{
+        background-color: $primary200;
+        .login-card{
+            @include card;
+            margin: 0 30px;
+            width: calc(100% - 60px);
+            .login-form{
+                width: 372px;
+            }
+        }
+    }
+}
+@media (min-width: $breakpointDesktop) {
+    body.login-page{
+        .login-card{
+            margin: auto;
+            width: $breakpointDesktop - 30px;
+            .login-form{
+                width: 372px;
+            }
+        }
+    }
+}

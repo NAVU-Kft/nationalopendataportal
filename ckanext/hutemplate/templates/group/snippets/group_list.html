@@ -1,0 +1,10 @@
+{% ckan_extends %} 
+{% block group_list %}
+<div class="row">
+  {% for group in groups %}
+  <div class="col-md-3 my-4">
+    {% snippet "snippets/group_item.html", group=group, truncate=50, truncate_title=35 %}
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

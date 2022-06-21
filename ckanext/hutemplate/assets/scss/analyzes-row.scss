@@ -1,0 +1,44 @@
+@import "variables";
+
+.analyzes-row {
+  box-shadow: inset 0px 4px 4px #CBEFE8;
+  border-radius: 17px;
+  background-color: $highlightLight;
+  background-image: url('/img/arrows.svg');
+  background-position-x: 147px;
+  background-repeat: no-repeat;
+  margin-bottom: 25px;
+  &:hover, &:focus{
+    cursor: pointer;
+  }
+  height: 250px;
+  .analyzes-line{
+    border-top: 4px solid #57DBB2;
+    display: block;
+    width: 42px;
+    top: -13px;
+    position: relative;
+  }
+  a{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    height: 100%;
+    padding: 0 44px;
+    h2 {
+      @include fontPoppins700($secondary900);
+      font-size: 18px;
+      line-height: 27px;
+      margin: 0px 144px 0px 10px;
+    }
+    img{
+      display: none;
+      @media (min-width: $breakpointDesktop) {
+        display: inline-block;
+      }
+      align-self: flex-end;
+    }
+  }
+
+}

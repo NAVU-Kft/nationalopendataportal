@@ -1,0 +1,18 @@
+{% ckan_extends %}
+
+{% block bodytag %}
+class="login-page theme_hutemplate"
+{{ super() }}
+{% endblock %}
+
+{% block page %}
+  <div class="login-card">
+    <div class="login-logo">
+      {% snippet 'snippets/logo.html' %}
+    </div>
+    <h1 class="page-heading">{{ _('Login to the Open Data Portal') }}</h1>
+    {% block form %}
+    {% snippet "user/snippets/login_form.html", action=h.login_handler(), error_summary=error_summary %}
+    {% endblock %}
+  </div>
+{% endblock %}

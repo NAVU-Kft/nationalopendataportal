@@ -1,0 +1,24 @@
+@mixin full-width-splitter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100vw;
+    margin-bottom: 50px;
+    @media (min-width: 768px)
+    {
+        margin-left: calc(0px - ((100vw - 750px) / 2));
+    }
+    @media (min-width: 992px)
+    {
+        margin-left: calc(0px - ((100vw - 970px) / 2));
+    }
+    @media (min-width: 1200px)
+    {
+        margin-left: calc(0px - ((100vw - 1170px) / 2));
+    }
+    @media (min-width: 1400px){
+        margin-left: calc(0px - ((100vw - 1320px) / 2));
+    }
+}

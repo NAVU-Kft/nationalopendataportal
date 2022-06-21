@@ -1,0 +1,16 @@
+{% ckan_extends %} 
+
+{% block main_content %}
+   {{ self.toolbar() }}
+   <div class="wrapper no-nav">
+    <article class="module">
+      <div class="module-content pages">
+        <div class="page_primary_action">
+          {{ self.page_primary_action() }}
+        </div>
+        {% snippet 'ckanext_pages/snippets/pages_list.html', pages=c.page.items %}
+        {{ c.page.pager() }}
+      </div>
+    </article>
+   </div>
+{% endblock %}

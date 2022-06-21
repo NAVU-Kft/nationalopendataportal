@@ -1,0 +1,56 @@
+@import "variables";
+
+.site-footer {
+  padding: 0;
+  min-height: 87px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background: $darkGreen;
+  margin-top:auto; 
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include fontPoppins700;
+    font-size: 11px;
+    line-height: 16.5px;
+    a {
+      color: $white;
+      padding-bottom: 25px;
+      text-align: center;
+      &:first-child{
+        padding-top: 20px;
+      }
+      &:last-child{
+        padding-bottom: 20px;
+      }
+    }
+  }
+}
+
+@media (min-width: $breakpointDesktop) {
+  .site-footer {
+    .container {
+      font-size: 12px;
+      line-height: 18px;
+      flex-direction: row;
+      a, a:first-child, a:last-child {
+        padding: 0 14px;
+      }
+    }
+  }
+}
+
+@media (min-width: $breakpointWideScreen) {
+  .site-footer {
+    .container {
+      a, a:first-child, a:last-child {
+        padding: 0 25px;
+      }
+    }
+  }
+}
+

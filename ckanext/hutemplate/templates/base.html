@@ -1,0 +1,27 @@
+{% ckan_extends %}
+
+{%- block title -%}
+  {%- block subtitle %}{% endblock -%}
+  {%- if self.subtitle()|trim %} {{ g.template_title_delimiter }} {% endif -%}
+  {{_('National Open Data Portal')}}
+{%- endblock -%}
+
+{% block bodytag %}
+ {{ super() }} class="theme_hutemplate"
+{% endblock %}
+
+{% block links %}
+<link rel="shortcut icon" href="{{ h.url_for_static('favicon.ico') }}" />
+{% endblock %}
+
+{% block styles %}
+  {{ super() }}
+  {% asset 'hutemplate/hutemplate-css' %}
+{% endblock %}
+  
+{% block scripts %}
+<div style="display: none;" data-module="cookie_consent"></div>
+  {{ super() }}
+  {% asset 'hutemplate/hutemplate-dropdown-reposition' %}
+  {% asset 'hutemplate/hutemplate-editor-js' %}
+{% endblock %}

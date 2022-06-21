@@ -1,0 +1,14 @@
+{
+  "name": "hutemplate",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "sass": "^1.42.1"
+  },
+  "scripts": {
+    "scss:compile": "sass assets/scss/index.scss assets/css/hutemplate.css",
+    "scss:watch": "sass assets/scss/index.scss assets/css/hutemplate.css --watch",
+    "scss-ckeditor:compile": "sass assets/scss/ckeditor-index.scss public/css/ckeditor-content.css",
+    "scss-ckeditor:watch": "sass assets/scss/ckeditor-index.scss public/css/ckeditor-content.css --watch"
+  }
+}

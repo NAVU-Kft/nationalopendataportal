@@ -1,0 +1,48 @@
+.theme_hutemplate{
+    --cc-bg: #ffffff;
+    --cc-text: #000000;
+    --cc-btn-primary-bg: #2cba8f;
+    --cc-btn-primary-text: var(--cc-bg);
+    --cc-btn-primary-hover-bg: #1d2e38;
+    --cc-btn-secondary-bg: #ffffff;
+    --cc-btn-secondary-text: var(--cc-btn-primary-bg);
+    --cc-btn-secondary-hover-bg: #ffffff;
+    --cc-toggle-bg-off: #73ceaf;
+    --cc-toggle-bg-on: #2cba8f;
+    --cc-toggle-bg-readonly: #d6d6d6;
+    --cc-toggle-knob-bg: #fff;
+    --cc-toggle-knob-icon-color: #ecf2fa;
+    --cc-block-text: var(--cc-text);
+    --cc-cookie-category-block-bg: #f1fcf8;
+    --cc-cookie-category-block-bg-hover: #abe1ce;
+    --cc-section-border: #f1f3f5;
+    --cc-cookie-table-border: #e1e7f3;
+    --cc-overlay-bg: rgba(0, 0, 0, .5);
+    --cc-webkit-scrollbar-bg: #ebeff9;
+    --cc-webkit-scrollbar-bg-hover: #3859d0;
+}
+
+.theme_hutemplate #c-ttl{
+    color: #000930;
+}
+
+/* Custom border radius */
+.theme_hutemplate #cm.bar{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.theme_hutemplate #cm.bar #c-inr,
+.theme_hutemplate #cm.bar #c-bns {
+    max-width: 56em;
+}
+
+.theme_hutemplate .cc_div .c-bn{
+    border-radius: 50vw;
+    border: 1px solid var(--cc-btn-primary-bg);
+    font-size: 1em;
+    padding: 0.6em 1.7em;
+}
+.theme_hutemplate .cc_div #s-c-bn.c-bn{
+    border: none;
+}

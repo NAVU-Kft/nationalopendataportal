@@ -1,0 +1,19 @@
+{% extends "page.html" %}
+{% import 'macros/page_content.html' as mc with context%}
+
+{% block primary %}{% endblock %}
+{% block secondary %}{% endblock %}
+
+{% block breadcrumb_content %}
+<li class="active">{% link_for _('Data Request'), 'hutemplate.datarequest' %}</li>
+{% endblock %}
+
+
+{% block pre_primary %}
+  <div class="datarequest col-md-8 col-md-offset-2 col-sm-12 col-xs-12 col-md-card">
+    {% set page = h.get_page_for_type('DATA_REQUEST') %}
+    {{ mc.page_content(page) }}
+  </div>
+{% endblock %}
+
+ 
